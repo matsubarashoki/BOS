@@ -31,7 +31,7 @@ const Layout = () => {
         component={"main"}
         className="main-container"
         sx={{
-          backgroundColor: theme.palette.background.default,
+          backgroundColor: theme.palette.background.paper,
           flexGrow: 1,
         }}
       >

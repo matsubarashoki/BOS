@@ -1,0 +1,12 @@
+.MuiDataGrid-container--top [role="row"],
+.MuiDataGrid-container--bottom [role="row"] {
+  background-color: "#009688";
+}
+
+.MuiDataGrid-container--top {
+  background-color: "#009688";
+}
+
+.MuiDataGrid-row--borderBottom css-yseucu-MuiDataGrid-columnHeaderRow {
+  background-color: "#009688";
+}

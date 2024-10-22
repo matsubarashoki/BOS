@@ -19,7 +19,7 @@ export const colorTheme = createTheme({
   },
   palette: {
     background: {
-      default: "#e0f2f1",
+      paper: "#e0f2f1",
     },
     baseColor: {
       main: "#009688",

@@ -1,24 +1,38 @@
-import { Box, Container, Typography, useTheme } from "@mui/material";
+import {
+  Box,
+  Button,
+  Container,
+  Dialog,
+  DialogActions,
+  DialogContent,
+  DialogTitle,
+  TextField,
+} from "@mui/material";
 import Paper from "@mui/material/Paper";
-import { DataGrid, GridColDef } from "@mui/x-data-grid";
+import { DataGrid, GridColDef, GridToolbar } from "@mui/x-data-grid";
+import { useState } from "react";
+import "./userManagement.css";
 
 const columns: GridColDef[] = [
-  { field: "id", headerName: "ID", width: 70 },
-  { field: "firstName", headerName: "First name", width: 130 },
-  { field: "lastName", headerName: "Last name", width: 130 },
+  { field: "id", headerName: "ID", width: 70, headerClassName: "grid-header" },
+  {
+    field: "firstName",
+    headerName: "First name",
+    width: 130,
+    headerClassName: "grid-header",
+  },
+  {
+    field: "lastName",
+    headerName: "Last name",
+    width: 130,
+    headerClassName: "grid-header",
+  },
   {
     field: "age",
     headerName: "Age",
     type: "number",
     width: 90,
-  },
-  {
-    field: "fullName",
-    headerName: "Full name",
-    description: "This column has a value getter and is not sortable.",
-    sortable: false,
-    width: 160,
-    valueGetter: (value, row) => `${row.firstName || ""} ${row.lastName || ""}`,
+    headerClassName: "grid-header",
   },
 ];
 
@@ -37,43 +51,109 @@ const rows = [
 const paginationModel = { page: 0, pageSize: 5 };
 
 export default function UserManagement() {
-  const theme = useTheme();
+  const [open, setOpen] = useState(false);
+
+  const handleOpen = (mode: String) => {
+    // setFormData({ name: '' }); // フォームの初期化
+    // setEditMode(false);
+    setOpen(true);
+  };
+
+  // ダイアログを閉じる
+  const handleClose = () => {
+    setOpen(false);
+  };
+
   return (
-    <Container maxWidth={false} className="userManagement-container">
-      <Box
-        className="userManagement-box"
-        sx={{ margin: 2, bgcolor: theme.palette.primary.main }}
+    <>
+      <Container
+        maxWidth={false}
+        className="userManagement-container"
+        sx={{ padding: 3 }}
       >
-        <Typography
-          gutterBottom
-          variant="h5"
-          component="div"
-          fontWeight={"bold"}
-        >
-          User Management : select and click add, update, delete
-        </Typography>
-        	
-        <Paper sx={{ height: 400, width: "100%", bgcolor: "#fff" }}>
-          <DataGrid
-            rows={rows}
-            columns={columns}
-            initialState={{ pagination: { paginationModel } }}
-            pageSizeOptions={[5, 10]}
-            checkboxSelection
+        <Box className="userManagement-box" sx={{ padding: 3, width: "100%" }}>
+          <Box
+            className="userManagement-itemBox"
             sx={{
-              border: 0,
-              "& .MuiDataGrid-topContainer": {
-                backgroundColor: theme.palette.primary.main, // ヘッダーの背景色
-                color: "black", // ヘッダーの文字色
-              },
-              "& .MuiDataGrid-columnHeaders": {
-                backgroundColor: theme.palette.primary.main, // ヘッダーの背景色
-                color: "black", // ヘッダーの文字色
-              },
+              width: "100%",
+              display: "flex",
+              justifyContent: "flex-end",
+              padding: 1,
             }}
+          >
+            <Button
+              sx={{
+                bgcolor: "#fff",
+                borderRadius: "10%",
+                border: "solid",
+                marginX: 0.5,
+              }}
+              onClick={(e) => handleOpen("add")}
+            >
+              Add
+            </Button>
+            <Button
+              sx={{
+                bgcolor: "#fff",
+                borderRadius: "10%",
+                border: "solid",
+                marginX: 0.5,
+              }}
+            >
+              Edit
+            </Button>
+            <Button
+              sx={{
+                bgcolor: "#fff",
+                borderRadius: "10%",
+                border: "solid",
+                marginX: 0.5,
+              }}
+            >
+              Delete
+            </Button>
+          </Box>
+
+          <Paper sx={{ height: 400, width: "100%", bgcolor: "#fff" }}>
+            <DataGrid
+              rows={rows}
+              columns={columns}
+              initialState={{ pagination: { paginationModel } }}
+              pageSizeOptions={[5, 10]}
+              checkboxSelection
+              slots={{ toolbar: GridToolbar }}
+              sx={{
+                "&.MuiDataGrid-root": {
+                  border: "none",
+                },
+              }}
+            />
+          </Paper>
+        </Box>
+      </Container>
+      {/* ダイアログ */}
+      <Dialog open={open} onClose={handleClose} sx={{ bgcolor: "#fff" }}>
+        <DialogTitle>test</DialogTitle>
+        <DialogContent>
+          <TextField
+            autoFocus
+            margin="dense"
+            label="Name"
+            name="name"
+            fullWidth
+            // value={formData.name}
+            // onChange={handleChange}
           />
-        </Paper>
-      </Box>
-    </Container>
+        </DialogContent>
+        <DialogActions>
+          <Button onClick={handleClose}>Cancel</Button>
+          <Button
+          // onClick={handleSave}
+          >
+            test
+          </Button>
+        </DialogActions>
+      </Dialog>
+    </>
   );
 }

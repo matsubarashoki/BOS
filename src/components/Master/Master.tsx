@@ -13,13 +13,13 @@ import {
 import Grid from "@mui/material/Grid2";
 import { Link } from "react-router-dom";
 
-const Master = () => {
-  const MasterCard = styled(Card)(() => ({
-    width: "400px",
-    height: "150px",
-    margin: 2,
-  }));
+const MasterCard = styled(Card)(() => ({
+  width: "400px",
+  height: "150px",
+  margin: 2,
+}));
 
+const Master = () => {
   return (
     <Container maxWidth={false} className="master-container">
       <Box
@@ -38,7 +38,7 @@ const Master = () => {
           margin={1}
         >
           <Grid sx={{ marginY: 2 }} display={"flex"}>
-            <MasterCard sx={{ margin: 1 }}>
+            <MasterCard sx={{ margin: 1, bgcolor: "#fff" }}>
               <CardActionArea
                 component={Link}
                 to="/master/userManagement"
@@ -64,7 +64,7 @@ const Master = () => {
                 </CardContent>
               </CardActionArea>
             </MasterCard>
-            <MasterCard sx={{ margin: 1 }}>
+            <MasterCard sx={{ margin: 1, bgcolor: "#fff" }}>
               <CardActionArea
                 component={Link}
                 to="/orgManagement"
@@ -92,7 +92,7 @@ const Master = () => {
             </MasterCard>
           </Grid>
           <Grid sx={{ marginY: 1 }} display={"flex"}>
-            <MasterCard sx={{ margin: 1 }}>
+            <MasterCard sx={{ margin: 1, bgcolor: "#fff" }}>
               <CardActionArea
                 component={Link}
                 to="/destination"
@@ -118,7 +118,7 @@ const Master = () => {
                 </CardContent>
               </CardActionArea>
             </MasterCard>
-            <MasterCard sx={{ margin: 1 }}>
+            <MasterCard sx={{ margin: 1, bgcolor: "#fff" }}>
               <CardActionArea
                 component={Link}
                 to="/destination"
