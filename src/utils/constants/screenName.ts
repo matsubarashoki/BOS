@@ -1,13 +1,16 @@
 import { ScreenPath } from "../type/type";
 
 export const pathScreenSet: ScreenPath = {
-  "/bos/home": {
+  "/": {
     name: "Home",
   },
-  "/bos/master": {
+  "/master": {
     name: "Master Data Management",
   },
-  "/bos/master/userManagement": {
+  "/master/userManagement": {
     name: "User Management",
+  },
+  "/master/orgManagement": {
+    name: "Org Management",
   },
 };

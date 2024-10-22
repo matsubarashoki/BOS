@@ -41,7 +41,7 @@ const Master = () => {
             <MasterCard sx={{ margin: 1 }}>
               <CardActionArea
                 component={Link}
-                to="/bos/master/userManagement"
+                to="/master/userManagement"
                 sx={{ height: "100%" }}
               >
                 <CardContent
@@ -67,7 +67,7 @@ const Master = () => {
             <MasterCard sx={{ margin: 1 }}>
               <CardActionArea
                 component={Link}
-                to="/destination"
+                to="/orgManagement"
                 sx={{ height: "100%" }}
               >
                 <CardContent

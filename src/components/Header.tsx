@@ -17,9 +17,9 @@ const Header = () => {
   const theme = useTheme();
   const textColor = theme.palette.primary.main;
   const setNavLinks: Array<{ text: string; url: string }> = [
-    { text: "Top", url: "/bos/home" },
-    { text: "Master", url: "/bos/master" },
-    { text: "Skill", url: "/skill" },
+    { text: "Top", url: "/" },
+    { text: "Master", url: "master" },
+    { text: "Skill", url: "skill" },
     { text: "Production", url: "/production" },
     { text: "Contact", url: "/contact" },
     { text: "Blog", url: "/blog" },

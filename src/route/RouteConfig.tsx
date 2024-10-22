@@ -7,6 +7,7 @@ import LoginPage from "../pages/Login/LoginPage";
 import { NotFound } from "../pages/NotFound";
 import ProtectedRoute from "./protectedRoute";
 import { useAuth } from "./routeAuthHooks";
+import OrgManagement from "../components/Master/OrgManagement";
 
 export const RouterConfig = () => {
   const { user } = useAuth();
@@ -16,7 +17,7 @@ export const RouterConfig = () => {
         <Route path="/login" element={<LoginPage />} />
 
         <Route
-          path="/bos"
+          path="/"
           element={
             <ProtectedRoute isLogin={!!user}>
               <Layout />
@@ -27,6 +28,7 @@ export const RouterConfig = () => {
           <Route path="master">
             <Route index={true} element={<Master />} />
             <Route path="userManagement" element={<UserManagement />} />
+            <Route path="orgManagement" element={<OrgManagement />} />
           </Route>
         </Route>
 

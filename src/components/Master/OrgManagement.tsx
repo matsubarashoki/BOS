@@ -4,7 +4,7 @@ import { DataGrid, GridColDef } from "@mui/x-data-grid";
 
 const columns: GridColDef[] = [
   { field: "id", headerName: "ID", width: 70 },
-  { field: "firstName", headerName: "First name", width: 130 },
+  { field: "Name", headerName: "First name", width: 130 },
   { field: "lastName", headerName: "Last name", width: 130 },
   {
     field: "age",
@@ -36,12 +36,13 @@ const rows = [
 
 const paginationModel = { page: 0, pageSize: 5 };
 
-export default function UserManagement() {
+export default function OrgManagement (){
+
   const theme = useTheme();
   return (
-    <Container maxWidth={false} className="userManagement-container">
+    <Container maxWidth={false} className="OrgManagement-container">
       <Box
-        className="userManagement-box"
+        className="orgManagement-box"
         sx={{ margin: 2, bgcolor: theme.palette.primary.main }}
       >
         <Typography
@@ -50,7 +51,7 @@ export default function UserManagement() {
           component="div"
           fontWeight={"bold"}
         >
-          User Management : select and click add, update, delete
+          Organization Management : select and click add, update, delete
         </Typography>
         	
         <Paper sx={{ height: 400, width: "100%", bgcolor: "#fff" }}>
