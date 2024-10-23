@@ -12,6 +12,7 @@ import Paper from "@mui/material/Paper";
 import { DataGrid, GridColDef, GridToolbar } from "@mui/x-data-grid";
 import { useState } from "react";
 import "./userManagement.css";
+import DialogModule from "../Dialog";
 
 const columns: GridColDef[] = [
   { field: "id", headerName: "ID", width: 70, headerClassName: "grid-header" },
@@ -132,28 +133,27 @@ export default function UserManagement() {
         </Box>
       </Container>
       {/* ダイアログ */}
-      <Dialog open={open} onClose={handleClose} sx={{ bgcolor: "#fff" }}>
-        <DialogTitle>test</DialogTitle>
-        <DialogContent>
-          <TextField
-            autoFocus
-            margin="dense"
-            label="Name"
-            name="name"
-            fullWidth
-            // value={formData.name}
-            // onChange={handleChange}
-          />
-        </DialogContent>
-        <DialogActions>
-          <Button onClick={handleClose}>Cancel</Button>
-          <Button
-          // onClick={handleSave}
-          >
-            test
-          </Button>
-        </DialogActions>
-      </Dialog>
+      <DialogModule open={open} onClose={handleClose} title="Form Dialog" onSubmit={handleSubmit}>
+        <TextField
+          label="Name"
+          name="name"
+          value={formData.name}
+          onChange={handleInputChange}
+          fullWidth
+          margin="normal"
+        />
+        <TextField
+          label="Email"
+          name="email"
+          value={formData.email}
+          onChange={handleInputChange}
+          fullWidth
+          margin="normal"
+        />
+      </DialogModule>
+
+
+
     </>
   );
 }
