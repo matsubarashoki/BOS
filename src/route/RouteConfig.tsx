@@ -1,13 +1,13 @@
 import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
 import Master from "../components/Master/Master";
-import UserManagement from "../components/Master/UserManagement";
+import OrgManagement from "../components/Master/OrgManagement";
+import UserManagement from "../components/Master/UserManagement/UserManagement";
 import HomePage from "../pages/HomePage";
 import Layout from "../pages/Layout";
 import LoginPage from "../pages/Login/LoginPage";
 import { NotFound } from "../pages/NotFound";
 import ProtectedRoute from "./protectedRoute";
 import { useAuth } from "./routeAuthHooks";
-import OrgManagement from "../components/Master/OrgManagement";
 
 export const RouterConfig = () => {
   const { user } = useAuth();
