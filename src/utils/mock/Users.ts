@@ -2,7 +2,7 @@ import { userType } from "../type/type";
 
 export const testUsers: userType[] = [
   {
-    id: "1",
+    userId: "1",
     lastName: "田中",
     firstName: "太郎",
     lastNameKane: "タナカ",
@@ -18,7 +18,7 @@ export const testUsers: userType[] = [
     nearestStation: "新宿駅",
   },
   {
-    id: "2",
+    userId: "2",
     lastName: "佐藤",
     firstName: "花子",
     lastNameKane: "サトウ",
@@ -34,7 +34,7 @@ export const testUsers: userType[] = [
     nearestStation: "東京駅",
   },
   {
-    id: "3",
+    userId: "3",
     lastName: "鈴木",
     firstName: "一郎",
     lastNameKane: "スズキ",
@@ -50,7 +50,7 @@ export const testUsers: userType[] = [
     nearestStation: "渋谷駅",
   },
   {
-    id: "4",
+    userId: "4",
     lastName: "高橋",
     firstName: "直美",
     lastNameKane: "タカハシ",
@@ -66,7 +66,7 @@ export const testUsers: userType[] = [
     nearestStation: "横浜駅",
   },
   {
-    id: "5",
+    userId: "5",
     lastName: "渡辺",
     firstName: "健太",
     lastNameKane: "ワタナベ",
@@ -82,7 +82,7 @@ export const testUsers: userType[] = [
     nearestStation: "品川駅",
   },
   {
-    id: "6",
+    userId: "6",
     lastName: "山本",
     firstName: "美咲",
     lastNameKane: "ヤマモト",
@@ -98,7 +98,7 @@ export const testUsers: userType[] = [
     nearestStation: "池袋駅",
   },
   {
-    id: "7",
+    userId: "7",
     lastName: "小林",
     firstName: "翔太",
     lastNameKane: "コバヤシ",
@@ -114,7 +114,7 @@ export const testUsers: userType[] = [
     nearestStation: "新橋駅",
   },
   {
-    id: "8",
+    userId: "8",
     lastName: "中村",
     firstName: "亮",
     lastNameKane: "ナカムラ",
@@ -130,7 +130,7 @@ export const testUsers: userType[] = [
     nearestStation: "大手町駅",
   },
   {
-    id: "9",
+    userId: "9",
     lastName: "加藤",
     firstName: "明美",
     lastNameKane: "カトウ",
@@ -146,7 +146,7 @@ export const testUsers: userType[] = [
     nearestStation: "上野駅",
   },
   {
-    id: "10",
+    userId: "10",
     lastName: "井上",
     firstName: "大輔",
     lastNameKane: "イノウエ",
@@ -162,7 +162,7 @@ export const testUsers: userType[] = [
     nearestStation: "秋葉原駅",
   },
   {
-    id: "11",
+    userId: "11",
     lastName: "松本",
     firstName: "洋子",
     lastNameKane: "マツモト",
@@ -178,7 +178,7 @@ export const testUsers: userType[] = [
     nearestStation: "大宮駅",
   },
   {
-    id: "12",
+    userId: "12",
     lastName: "山田",
     firstName: "優",
     lastNameKane: "ヤマダ",
@@ -194,7 +194,7 @@ export const testUsers: userType[] = [
     nearestStation: "品川駅",
   },
   {
-    id: "13",
+    userId: "13",
     lastName: "近藤",
     firstName: "裕太",
     lastNameKane: "コンドウ",
@@ -210,7 +210,7 @@ export const testUsers: userType[] = [
     nearestStation: "東京駅",
   },
   {
-    id: "14",
+    userId: "14",
     lastName: "渡邉",
     firstName: "瑞希",
     lastNameKane: "ワタナベ",
@@ -226,7 +226,7 @@ export const testUsers: userType[] = [
     nearestStation: "新宿駅",
   },
   {
-    id: "15",
+    userId: "15",
     lastName: "石井",
     firstName: "慎吾",
     lastNameKane: "イシイ",
@@ -242,7 +242,7 @@ export const testUsers: userType[] = [
     nearestStation: "池袋駅",
   },
   {
-    id: "16",
+    userId: "16",
     lastName: "上田",
     firstName: "茜",
     lastNameKane: "ウエダ",
@@ -258,7 +258,7 @@ export const testUsers: userType[] = [
     nearestStation: "渋谷駅",
   },
   {
-    id: "17",
+    userId: "17",
     lastName: "吉田",
     firstName: "徹",
     lastNameKane: "ヨシダ",
@@ -274,7 +274,7 @@ export const testUsers: userType[] = [
     nearestStation: "横浜駅",
   },
   {
-    id: "18",
+    userId: "18",
     lastName: "藤田",
     firstName: "美奈子",
     lastNameKane: "フジタ",
@@ -290,7 +290,7 @@ export const testUsers: userType[] = [
     nearestStation: "新橋駅",
   },
   {
-    id: "19",
+    userId: "19",
     lastName: "森",
     firstName: "和彦",
     lastNameKane: "モリ",
@@ -306,7 +306,7 @@ export const testUsers: userType[] = [
     nearestStation: "上野駅",
   },
   {
-    id: "20",
+    userId: "20",
     lastName: "坂本",
     firstName: "亮太",
     lastNameKane: "サカモト",

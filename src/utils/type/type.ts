@@ -10,7 +10,7 @@ export interface addUserFormData {
 }
 
 export interface userType {
-  id: string | null;
+  userId: string | null;
   lastName: string;
   firstName: string;
   lastNameKane: string;

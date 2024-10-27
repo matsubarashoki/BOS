@@ -2,7 +2,7 @@ import { GridColDef } from "@mui/x-data-grid";
 
 export const userColumns: GridColDef[] = [
   {
-    field: "id",
+    field: "userId",
     headerName: "ID",
     width: 50,
     type: "string",

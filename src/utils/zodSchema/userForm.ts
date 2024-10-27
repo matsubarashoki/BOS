@@ -4,12 +4,8 @@ export const userFormSchema = z.object({
   userId: z.string().nullable().optional(),
   lastName: z.string(),
   firstName: z.string(),
-  lastNameKane: z
-    .string()
-    .regex(/^[\u3040-\u309F]+$/, "カナ文字のみ入力してください"),
-  firstNameKana: z
-    .string()
-    .regex(/^[\u3040-\u309F]+$/, "カナ文字のみ入力してください"),
+  lastNameKane: z.string().regex(/^[ァ-ン]+$/, "カナ文字のみ入力してください"),
+  firstNameKana: z.string().regex(/^[ァ-ン]+$/, "カナ文字のみ入力してください"),
   romanName: z.string().regex(/^[a-zA-Z]+$/, "半角英数字のみ入力してください"),
   dateOfBirth: z.string(),
   age: z.number().min(1, { message: "適切な年齢を入力してください" }),
