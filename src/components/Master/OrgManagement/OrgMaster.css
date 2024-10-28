@@ -1,0 +1,5 @@
+/* OrganizationChart の階層線の色とスタイルを変更 */
+.p-organizationchart .p-organizationchart-line {
+  border-color: #ff5733; /* 任意の色に変更 */
+  border-width: 2px; /* 線の太さを調整 */
+}

@@ -1,6 +1,6 @@
 import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
 import Master from "../components/Master/Master";
-import OrgManagement from "../components/Master/OrgManagement";
+import OrgManagement from "../components/Master/OrgManagement/OrgManagement";
 import UserManagement from "../components/Master/UserManagement/UserManagement";
 import HomePage from "../pages/HomePage";
 import Layout from "../pages/Layout";

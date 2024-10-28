@@ -122,6 +122,7 @@ export default function UserManagement() {
       (user) => !selectedUserIds.includes(user.userId)
     );
     setUsers(deletedUsers);
+    handleClose();
   };
 
   const userForm = (
