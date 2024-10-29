@@ -7,59 +7,12 @@ import { TreeNode } from "primereact/treenode";
 import { useState } from "react";
 
 import "./OrgMaster.css";
+import { orgChartMockData } from "../../../utils/mock/orgChartMockData";
 
 export default function OrgManagement() {
   const theme = useTheme();
 
-  const [data] = useState<TreeNode[]>([
-    {
-      label: "CEO",
-      expanded: true,
-      children: [
-        {
-          label: "管理部",
-          expanded: true,
-          children: [
-            {
-              label: "総務",
-            },
-            {
-              label: "経理",
-            },
-          ],
-        },
-        {
-          label: "開発1部",
-          expanded: true,
-          children: [
-            {
-              label: "AIチーム",
-            },
-            {
-              label: "HIチーム",
-              data: "hr",
-            },
-          ],
-        },
-        {
-          label: "開発第二部",
-          expanded: true,
-          data: "fr",
-          children: [
-            {
-              label: "ローコードチーム",
-              data: "fr",
-            },
-            {
-              label: "営業システムチーム",
-              data: "ma",
-            },
-          ],
-        },
-      ],
-    },
-  ]);
-
+  
   return (
     <PrimeReactProvider>
       <Container maxWidth={false} className="OrgManagement-container">
@@ -107,7 +60,7 @@ export default function OrgManagement() {
 
           <div className="card overflow-x-auto">
             <OrganizationChart
-              value={data}
+              value={orgChartMockData}              
               nodeTemplate={(node) => (
                 <div>
                   <span>{node.label}</span>
@@ -116,6 +69,8 @@ export default function OrgManagement() {
               style={{ width: "100%", height: "100%" }}
             />
           </div>
+
+          
         </Box>
       </Container>
     </PrimeReactProvider>
