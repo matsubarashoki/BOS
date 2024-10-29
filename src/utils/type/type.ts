@@ -25,3 +25,19 @@ export interface userType {
   position: string;
   nearestStation: string;
 }
+
+export interface OrgRow {
+  id: number;
+  orgId: string;
+  parentId: string;
+  level: number;
+  Name: string;
+  createBy: string;
+}
+
+export interface OrgChartNode {
+  label: string;
+  expanded?: boolean;
+  data?: string;
+  children?: OrgChartNode[];
+}
