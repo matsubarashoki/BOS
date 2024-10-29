@@ -16,3 +16,5 @@ export const userDefoValue: UserFormSchema = {
   position: "",
   nearestStation: "",
 };
+
+export const orgDefoValue: OrgFormSchema ={}

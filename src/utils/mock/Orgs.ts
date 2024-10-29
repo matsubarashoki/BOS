@@ -1,4 +1,6 @@
-export const orgRows = [
+
+import { OrgRow } from "../type/type";
+export const orgRows:OrgRow[] = [
   {
     id: 1,
     orgId: "001",
