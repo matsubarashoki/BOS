@@ -30,7 +30,7 @@ export interface OrgRow {
   id: number;
   orgId: string;
   parentId: string;
-  level: number;
+  level: string;
   Name: string;
   createBy: string;
 }

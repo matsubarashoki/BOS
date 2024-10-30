@@ -8,11 +8,13 @@ import "primereact/resources/themes/saga-blue/theme.css";
 import { useEffect, useState } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { convertToOrgChartData } from "../../../utils/func/convertToOrgChartData";
+import { orgDefoValue } from "../../../utils/initialValues/initialValues";
 import { orgChartMockData } from "../../../utils/mock/orgChartMockData";
 import { orgRows } from "../../../utils/mock/Orgs";
 import { OrgChartNode, OrgRow } from "../../../utils/type/type";
 import { OrgFormSchema, orgFormSchema } from "../../../utils/zodSchema/orgForm";
 import DialogModule from "../../Dialog";
+import { OrgForm } from "./OrgForm";
 import { orgColumns } from "./OrgGridColDef";
 import "./OrgMaster.css";
 
@@ -29,10 +31,10 @@ export default function OrgManagement() {
   const [snackBarMessage, setSnackBarMessage] = useState("");
   const [selectedRows, setSelectedRows] = useState<OrgRow[]>([]);
   useEffect(() => {
-    const newOrgChartData = convertToOrgChartData(orgRows);
+    const newOrgChartData = convertToOrgChartData(orgs);
     console.log(newOrgChartData);
     setOrgChartData(newOrgChartData);
-  }, []);
+  }, [orgs]);
 
   const {
     control,
@@ -41,7 +43,7 @@ export default function OrgManagement() {
     reset,
     setValue,
   } = useForm<OrgFormSchema>({
-    defaultValues: orgRows,
+    defaultValues: orgDefoValue,
     resolver: zodResolver(orgFormSchema),
   });
 
@@ -73,20 +75,11 @@ export default function OrgManagement() {
   const handleEdit = () => {
     if (selectedRows.length === 1) {
       const row = selectedRows[0];
-      // setValue("userId", row.userId);
-      // setValue("lastName", row.lastName);
-      // setValue("firstName", row.firstName);
-      // setValue("lastNameKane", row.lastNameKane);
-      // setValue("firstNameKana", row.firstNameKana);
-      // setValue("romanName", row.romanName);
-      // setValue("dateOfBirth", row.dateOfBirth);
-      // setValue("age", row.age);
-      // setValue("dateOfEmployment", row.dateOfEmployment);
-      // setValue("email", row.email);
-      // setValue("phone", row.phone);
-      // setValue("department", row.department);
-      // setValue("position", row.position);
-      // setValue("nearestStation", row.nearestStation);
+      setValue("orgId", row.orgId);
+      setValue("parentId", row.parentId);
+      setValue("level", row.level);
+      setValue("Name", row.Name);
+      setValue("createBy", row.createBy);
       handleOpen("Edit");
     } else if (selectedRows.length === 0) {
       setSnackBarOpen(true);
@@ -98,14 +91,14 @@ export default function OrgManagement() {
   };
 
   const onSubmit: SubmitHandler<OrgFormSchema> = async (data) => {
-    // // フォームデータを送信する処理をここに追加(まだモックに追加のみ)
-    // const maxId = testUsers.reduce((max, user) => {
-    //   const userId = user.userId ? Number(user.userId) : 0; // nullチェックを含めて変換
-    //   return userId > max ? userId : max;
-    // }, 0);
-    // const newUser: userType = { ...data, userId: String(maxId + 1) };
-    // setUsers((prevState) => [...prevState, newUser]);
-    // reset();
+    // フォームデータを送信する処理をここに追加(まだモックに追加のみ)
+    const maxId = orgs.reduce((max, org) => {
+      const id = org.id ? Number(org.id) : 0; // nullチェックを含めて変換
+      return id > max ? id : max;
+    }, 0);
+    const newOrg: OrgRow = { ...data, id: maxId + 1 };
+    setOrgs((prevState) => [...prevState, newOrg]);
+    reset();
     handleClose();
   };
 
@@ -155,6 +148,7 @@ export default function OrgManagement() {
                 border: "solid",
                 marginX: 0.5,
               }}
+              onClick={() => handleOpen("add")}
             >
               Add
             </Button>
@@ -165,6 +159,7 @@ export default function OrgManagement() {
                 border: "solid",
                 marginX: 0.5,
               }}
+              onClick={() => handleOpen("Edit")}
             >
               Edit
             </Button>
@@ -175,6 +170,14 @@ export default function OrgManagement() {
                 border: "solid",
                 marginX: 0.5,
               }}
+              onClick={() => {
+                if (selectedRows.length !== 0) {
+                  setDeleteDialogpen(true);
+                } else {
+                  setSnackBarOpen(true);
+                  setSnackBarMessage("Userが選択されていません");
+                }
+              }}
             >
               Delete
             </Button>
@@ -182,13 +185,13 @@ export default function OrgManagement() {
 
           <Paper sx={{ height: 500, width: "100%", bgcolor: "#fff" }}>
             <DataGrid
-              rows={orgRows}
+              rows={orgs}
               columns={orgColumns}
               initialState={{ pagination: { paginationModel } }}
               pageSizeOptions={[5, 10]}
               checkboxSelection
               getRowId={(row) => row.orgId}
-              // onRowSelectionModelChange={handleSelectionChange}
+              onRowSelectionModelChange={handleSelectionChange}
               slots={{ toolbar: GridToolbar }}
             />
           </Paper>
@@ -201,8 +204,7 @@ export default function OrgManagement() {
           title={dialogTitle}
           onSubmit={handleSubmit(onSubmit)}
         >
-          test
-          {/* <UserForm control={control} errors={errors} /> */}
+          <OrgForm control={control} errors={errors} />
         </DialogModule>
         {/* Delete ダイアログ */}
         <DialogModule

@@ -1,3 +1,4 @@
+import { OrgFormSchema } from "../zodSchema/orgForm";
 import { UserFormSchema } from "../zodSchema/userForm";
 
 export const userDefoValue: UserFormSchema = {
@@ -17,4 +18,11 @@ export const userDefoValue: UserFormSchema = {
   nearestStation: "",
 };
 
-export const orgDefoValue: OrgFormSchema ={}
+export const orgDefoValue: OrgFormSchema = {
+  id: 0,
+  orgId: "",
+  parentId: "",
+  level: "",
+  Name: "",
+  createBy: "",
+};
