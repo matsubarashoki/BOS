@@ -91,13 +91,22 @@ export default function UserManagement() {
   };
 
   const onSubmit: SubmitHandler<UserFormSchema> = async (data) => {
-    // フォームデータを送信する処理をここに追加(まだモックに追加のみ)
-    const maxId = testUsers.reduce((max, user) => {
-      const userId = user.userId ? Number(user.userId) : 0; // nullチェックを含めて変換
-      return userId > max ? userId : max;
-    }, 0);
-    const newUser: userType = { ...data, userId: String(maxId + 1) };
-    setUsers((prevState) => [...prevState, newUser]);
+    if (data.userId) {
+      const updatedData = users.map(
+        (item) => item.userId === data.userId ? {...item,...data} : item
+      )
+      setUsers(updatedData);
+    } else {
+
+
+      // フォームデータを送信する処理をここに追加(まだモックに追加のみ)
+      const maxId = users.reduce((max, user) => {
+        const userId = user.userId ? Number(user.userId) : 0; // nullチェックを含めて変換
+        return userId > max ? userId : max;
+      }, 0);
+      const newUser: userType = { ...data, userId: String(maxId + 1) };
+      setUsers((prevState) => [...prevState, newUser]);
+    }
     reset();
     handleClose();
   };

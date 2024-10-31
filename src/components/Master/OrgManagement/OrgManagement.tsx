@@ -30,6 +30,7 @@ export default function OrgManagement() {
   const [dialogTitle, setDialogTitle] = useState<string>("");
   const [snackBarMessage, setSnackBarMessage] = useState("");
   const [selectedRows, setSelectedRows] = useState<OrgRow[]>([]);
+
   useEffect(() => {
     const newOrgChartData = convertToOrgChartData(orgs);
     console.log(newOrgChartData);
@@ -65,6 +66,7 @@ export default function OrgManagement() {
 
   // 選択した行データを保持
   const handleSelectionChange = (selectionModel: GridRowSelectionModel) => {
+
     const selectedData = orgs.filter((org) =>
       selectionModel.includes(org.orgId as string)
     );
@@ -83,10 +85,10 @@ export default function OrgManagement() {
       handleOpen("Edit");
     } else if (selectedRows.length === 0) {
       setSnackBarOpen(true);
-      setSnackBarMessage("複数選択されています。");
+      setSnackBarMessage("選択されていません。");
     } else {
       setSnackBarOpen(true);
-      setSnackBarMessage("選択されていません");
+      setSnackBarMessage("複数選択されています");
     }
   };
 
@@ -159,7 +161,7 @@ export default function OrgManagement() {
                 border: "solid",
                 marginX: 0.5,
               }}
-              onClick={() => handleOpen("Edit")}
+              onClick={() => handleEdit()}
             >
               Edit
             </Button>
