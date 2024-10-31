@@ -83,22 +83,20 @@ export default function UserManagement() {
       handleOpen("Edit");
     } else if (selectedRows.length === 0) {
       setSnackBarOpen(true);
-      setSnackBarMessage("Userが複数選択されています。");
+      setSnackBarMessage("Userが選択されていません");
     } else {
       setSnackBarOpen(true);
-      setSnackBarMessage("Userが選択されていません");
+      setSnackBarMessage("Userが複数選択されています。");
     }
   };
 
   const onSubmit: SubmitHandler<UserFormSchema> = async (data) => {
     if (data.userId) {
-      const updatedData = users.map(
-        (item) => item.userId === data.userId ? {...item,...data} : item
-      )
+      const updatedData = users.map((item) =>
+        item.userId === data.userId ? { ...item, ...data } : item
+      );
       setUsers(updatedData);
     } else {
-
-
       // フォームデータを送信する処理をここに追加(まだモックに追加のみ)
       const maxId = users.reduce((max, user) => {
         const userId = user.userId ? Number(user.userId) : 0; // nullチェックを含めて変換

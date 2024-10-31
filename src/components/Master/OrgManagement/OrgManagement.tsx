@@ -1,5 +1,13 @@
 import { zodResolver } from "@hookform/resolvers/zod";
-import { Alert, Box, Button, Container, Paper, Snackbar } from "@mui/material";
+import {
+  Alert,
+  Box,
+  Button,
+  Container,
+  Paper,
+  Snackbar,
+  useTheme,
+} from "@mui/material";
 import { DataGrid, GridRowSelectionModel, GridToolbar } from "@mui/x-data-grid";
 import { PrimeReactProvider } from "primereact/api";
 import { OrganizationChart } from "primereact/organizationchart";
@@ -19,9 +27,9 @@ import { orgColumns } from "./OrgGridColDef";
 import "./OrgMaster.css";
 
 export default function OrgManagement() {
+  const theme = useTheme();
   const paginationModel = { page: 0, pageSize: 10 };
   const [orgs, setOrgs] = useState<OrgRow[]>(orgRows);
-
   const [orgChartData, setOrgChartData] =
     useState<OrgChartNode[]>(orgChartMockData);
   const [open, setOpen] = useState(false);
@@ -33,7 +41,6 @@ export default function OrgManagement() {
 
   useEffect(() => {
     const newOrgChartData = convertToOrgChartData(orgs);
-    console.log(newOrgChartData);
     setOrgChartData(newOrgChartData);
   }, [orgs]);
 
@@ -66,7 +73,6 @@ export default function OrgManagement() {
 
   // 選択した行データを保持
   const handleSelectionChange = (selectionModel: GridRowSelectionModel) => {
-
     const selectedData = orgs.filter((org) =>
       selectionModel.includes(org.orgId as string)
     );
@@ -93,13 +99,22 @@ export default function OrgManagement() {
   };
 
   const onSubmit: SubmitHandler<OrgFormSchema> = async (data) => {
-    // フォームデータを送信する処理をここに追加(まだモックに追加のみ)
-    const maxId = orgs.reduce((max, org) => {
-      const id = org.id ? Number(org.id) : 0; // nullチェックを含めて変換
-      return id > max ? id : max;
-    }, 0);
-    const newOrg: OrgRow = { ...data, id: maxId + 1 };
-    setOrgs((prevState) => [...prevState, newOrg]);
+    if (data.id) {
+      const updatedData = orgs.map((item) =>
+        item.orgId === data.orgId ? { ...item, ...data } : item
+      );
+      console.log(updatedData);
+      setOrgs(updatedData as OrgRow[]);
+    } else {
+      // フォームデータを送信する処理をここに追加(まだモックに追加のみ)
+      const maxId = orgs.reduce((max, org) => {
+        const id = org.id ? Number(org.id) : 0; // nullチェックを含めて変換
+        return id > max ? id : max;
+      }, 0);
+      const newOrg: OrgRow = { ...data, id: maxId + 1 };
+      setOrgs((prevState) => [...prevState, newOrg]);
+    }
+
     reset();
     handleClose();
   };
@@ -122,7 +137,15 @@ export default function OrgManagement() {
         <Box className="orgManagement-box" sx={{ padding: 2, width: "100%" }}>
           <Box
             className="card overflow-x-auto"
-            sx={{ marginY: 1, height: "auto", width: "100%" }}
+            sx={{
+              marginY: 1,
+              paddingTop: 2,
+              height: "auto",
+              width: "100%",
+              bgcolor: "#fff",
+              borderColor: theme.palette.secondary.main,
+              borderRadius: 5,
+            }}
           >
             <OrganizationChart
               value={orgChartData}
