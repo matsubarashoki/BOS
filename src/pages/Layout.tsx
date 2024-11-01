@@ -12,6 +12,7 @@ const Layout = () => {
   const { screenName, setScreenName } = useScreenNameStore();
 
   useEffect(() => {
+    console.log(pathname);
     if (pathScreenSet[pathname].name) {
       setScreenName(pathScreenSet[pathname].name);
     }

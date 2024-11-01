@@ -1,6 +1,7 @@
 import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
 import Master from "../components/Master/Master";
 import OrgManagement from "../components/Master/OrgManagement/OrgManagement";
+import Report from "../components/Master/Report/Report";
 import UserManagement from "../components/Master/UserManagement/UserManagement";
 import HomePage from "../pages/HomePage";
 import Layout from "../pages/Layout";
@@ -29,6 +30,9 @@ export const RouterConfig = () => {
             <Route index={true} element={<Master />} />
             <Route path="userManagement" element={<UserManagement />} />
             <Route path="orgManagement" element={<OrgManagement />} />
+          </Route>
+          <Route path="report">
+            <Route index={true} element={<Report />} />
           </Route>
         </Route>
 

@@ -19,7 +19,7 @@ const Header = () => {
   const setNavLinks: Array<{ text: string; url: string }> = [
     { text: "Top", url: "/" },
     { text: "Master", url: "master" },
-    { text: "Skill", url: "skill" },
+    { text: "Report", url: "report" },
     { text: "Production", url: "/production" },
     { text: "Contact", url: "/contact" },
     { text: "Blog", url: "/blog" },

@@ -13,4 +13,7 @@ export const pathScreenSet: ScreenPath = {
   "/master/orgManagement": {
     name: "Org Management",
   },
+  "/report": {
+    name: "Report",
+  },
 };
