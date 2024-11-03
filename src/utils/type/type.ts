@@ -41,3 +41,8 @@ export interface OrgChartNode {
   data?: string;
   children?: OrgChartNode[];
 }
+
+export interface ReportType {
+  reportsName: string;
+  reportType: string;
+}

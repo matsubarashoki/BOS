@@ -1,6 +1,7 @@
 import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
 import Master from "../components/Master/Master";
 import OrgManagement from "../components/Master/OrgManagement/OrgManagement";
+import DairyReport from "../components/Master/Report/DairyReport";
 import Report from "../components/Master/Report/Report";
 import UserManagement from "../components/Master/UserManagement/UserManagement";
 import HomePage from "../pages/HomePage";
@@ -33,6 +34,7 @@ export const RouterConfig = () => {
           </Route>
           <Route path="report">
             <Route index={true} element={<Report />} />
+            <Route path="dairyReport" element={<DairyReport />} />
           </Route>
         </Route>
 

@@ -31,9 +31,11 @@ export const colorTheme = createTheme({
     },
     primary: {
       main: teal[500],
+      light: teal[300],
     },
     secondary: {
-      main: teal[300],
+      main: "#007bb2",
+      light: "#00b0ff",
     },
   },
 });

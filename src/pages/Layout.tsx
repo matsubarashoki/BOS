@@ -38,7 +38,7 @@ const Layout = () => {
       >
         <Toolbar
           sx={{
-            backgroundColor: theme.palette.secondary.main,
+            backgroundColor: theme.palette.primary.light,
             justifyContent: "center",
           }}
         >

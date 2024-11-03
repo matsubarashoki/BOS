@@ -1,4 +1,5 @@
 import { OrgFormSchema } from "../zodSchema/orgForm";
+import { ReportFormSchema } from "../zodSchema/reportForm";
 import { UserFormSchema } from "../zodSchema/userForm";
 
 export const userDefoValue: UserFormSchema = {
@@ -25,4 +26,13 @@ export const orgDefoValue: OrgFormSchema = {
   level: "",
   Name: "",
   createBy: "",
+};
+
+export const reportDefoValue: ReportFormSchema = {
+  reportId: "",
+  title: "",
+  submissionDate: new Date(),
+  content: "",
+  reporter: "",
+  recipient: "",
 };

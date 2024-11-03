@@ -143,7 +143,7 @@ export default function OrgManagement() {
               height: "auto",
               width: "100%",
               bgcolor: "#fff",
-              borderColor: theme.palette.secondary.main,
+              borderColor: theme.palette.primary.light,
               borderRadius: 5,
             }}
           >
