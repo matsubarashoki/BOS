@@ -1,6 +1,7 @@
 import { z } from "zod";
 
-export const reportFormSchema = z.object({
+// レポートの基本スキーマ
+const baseReportFormSchema = z.object({
   reportId: z.string().nullable().optional(),
   title: z.string().min(1, { message: "タイトルは必須です" }),
   submissionDate: z.date(),
@@ -12,4 +13,14 @@ export const reportFormSchema = z.object({
   recipient: z.string().min(1, { message: "報告先は必須です" }),
 });
 
-export type ReportFormSchema = z.infer<typeof reportFormSchema>;
+// DairyReport用の拡張スキーマ（必要に応じて他のレポート用に追加）
+const dairyReportSchema = baseReportFormSchema.extend({
+  // DairyReportに特有のフィールドがある場合はここに追加
+});
+
+export const reportFormSchemas = {
+  DairyReport: dairyReportSchema,
+  // 他のレポート用のスキーマが必要な場合はここに追加
+};
+
+export type ReportFormSchema = z.infer<typeof dairyReportSchema>;
