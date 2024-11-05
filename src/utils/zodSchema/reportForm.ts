@@ -18,8 +18,16 @@ const dairyReportSchema = baseReportFormSchema.extend({
   // DairyReportに特有のフィールドがある場合はここに追加
 });
 
+// DairyReport用の拡張スキーマ（必要に応じて他のレポート用に追加）
+const bookReportSchema = baseReportFormSchema.extend({
+ bookTitle: z.string().min(1,{message: "書籍名は必須です"})
+
+});
+
+
 export const reportFormSchemas = {
   DairyReport: dairyReportSchema,
+  BookReport: bookReportSchema,
   // 他のレポート用のスキーマが必要な場合はここに追加
 };
 

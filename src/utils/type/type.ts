@@ -1,3 +1,5 @@
+import { ReportFormSchema } from "../zodSchema/reportForm";
+
 export type ScreenPath = {
   [key: string]: {
     name: string;
@@ -46,3 +48,13 @@ export interface ReportType {
   reportsName: string;
   reportType: string;
 }
+
+export interface ReportFields 
+  {
+        name: keyof ReportFormSchema;
+            label: string;
+                type?: string;
+                    multiline?: boolean;
+                        rows?: number;
+                          }
+ 

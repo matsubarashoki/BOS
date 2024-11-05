@@ -10,6 +10,7 @@ import LoginPage from "../pages/Login/LoginPage";
 import { NotFound } from "../pages/NotFound";
 import ProtectedRoute from "./protectedRoute";
 import { useAuth } from "./routeAuthHooks";
+import BookReport from "../components/Master/Report/BookReport";
 
 export const RouterConfig = () => {
   const { user } = useAuth();
@@ -35,6 +36,7 @@ export const RouterConfig = () => {
           <Route path="report">
             <Route index={true} element={<Report />} />
             <Route path="dairyReport" element={<DairyReport />} />
+            <Route path="bookReport" element={<BookReport />} />
           </Route>
         </Route>
 
