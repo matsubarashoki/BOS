@@ -10,3 +10,4 @@ export const useScreenNameStore = create<useScreenNameStoreState>()((set) => ({
   screenName: "", // 初期値
   setScreenName: (newScreenName: string) => set({ screenName: newScreenName }),
 }));
+
