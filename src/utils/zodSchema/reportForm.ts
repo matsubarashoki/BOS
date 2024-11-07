@@ -20,10 +20,8 @@ const dairyReportSchema = baseReportFormSchema.extend({
 
 // DairyReport用の拡張スキーマ（必要に応じて他のレポート用に追加）
 const bookReportSchema = baseReportFormSchema.extend({
- bookTitle: z.string().min(1,{message: "書籍名は必須です"})
-
+  bookTitle: z.string().min(1, { message: "書籍名は必須です" }),
 });
-
 
 export const reportFormSchemas = {
   DairyReport: dairyReportSchema,
@@ -31,4 +29,6 @@ export const reportFormSchemas = {
   // 他のレポート用のスキーマが必要な場合はここに追加
 };
 
-export type ReportFormSchema = z.infer<typeof dairyReportSchema>;
+export type ReportFormSchema =
+  | z.infer<typeof dairyReportSchema>
+  | z.infer<typeof bookReportSchema>;

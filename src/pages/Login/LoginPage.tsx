@@ -12,13 +12,14 @@ import { styled } from "@mui/material/styles";
 import TextField from "@mui/material/TextField";
 import Typography from "@mui/material/Typography";
 
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../../route/routeAuthHooks";
 import AppTheme from "../../theme/AppTheme";
 import ColorModeSelect from "../../theme/colorModeSelect";
+import { testUsers } from "../../utils/mock/Users";
 import { SitemarkIcon } from "./CustomIcons";
 import ForgotPassword from "./ForgetPassword";
-import { useState } from "react";
 
 const Card = styled(MuiCard)(({ theme }) => ({
   display: "flex",
@@ -88,9 +89,19 @@ export default function SignIn(props: { disableCustomTheme?: boolean }) {
     }
     const data = new FormData(event.currentTarget);
     console.log(data);
-    const userData = { email: data.get("email") as string, role: "admin" }; // 例として管理者権限
-    setUser(userData);
-    navigate("/bos/home");
+    const loginUser = testUsers.find(
+      (user) => user.email === data.get("email")
+    );
+    console.log(loginUser);
+
+    if (!loginUser) {
+      console.error("Invalid credentials");
+      return;
+    }
+
+    setUser(loginUser);
+    localStorage.setItem("loginUser", JSON.stringify(loginUser));
+    navigate("/");
   };
 
   const validateInputs = () => {

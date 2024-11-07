@@ -49,12 +49,10 @@ export interface ReportType {
   reportType: string;
 }
 
-export interface ReportFields 
-  {
-        name: keyof ReportFormSchema;
-            label: string;
-                type?: string;
-                    multiline?: boolean;
-                        rows?: number;
-                          }
- 
+export interface ReportFields {
+  name: keyof ReportFormSchema;
+  label: string;
+  type?: string;
+  multiline?: boolean;
+  rows?: number;
+}

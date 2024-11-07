@@ -2,12 +2,12 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { Box, Container } from "@mui/material";
 import { useForm } from "react-hook-form";
 import { reportDefoValue } from "../../../utils/initialValues/initialValues";
+import { ReportFields } from "../../../utils/type/type";
 import {
   ReportFormSchema,
   reportFormSchemas,
 } from "../../../utils/zodSchema/reportForm";
 import ReportForm from "./ReportForm";
-import { ReportFields } from "../../../utils/type/type";
 
 const BookReport = () => {
   const formTitle = "読書感想文";
@@ -24,7 +24,7 @@ const BookReport = () => {
     console.log("フォームデータ:", data);
   };
 
-  const fields:ReportFields[] = [
+  const fields: ReportFields[] = [
     { name: "title", label: "タイトル" },
     { name: "bookTitle", label: "書籍名" },
     { name: "submissionDate", label: "提出日", type: "date" },

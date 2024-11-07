@@ -1,4 +1,5 @@
 import { ReactNode } from "react";
+import { Navigate } from "react-router-dom";
 
 interface ProtectedRouteProps {
   children: ReactNode;
@@ -12,9 +13,9 @@ const ProtectedRoute = ({
   isLogin,
   redirectPath = "/login",
 }: ProtectedRouteProps) => {
-  // if (!isLogin) {
-  //   return <Navigate to={redirectPath} replace />;
-  // }
+  if (!isLogin) {
+    return <Navigate to={redirectPath} replace />;
+  }
 
   return <>{children}</>;
 };

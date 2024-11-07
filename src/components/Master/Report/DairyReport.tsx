@@ -2,6 +2,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { Box, Container } from "@mui/material";
 import { useForm } from "react-hook-form";
 import { reportDefoValue } from "../../../utils/initialValues/initialValues";
+import { ReportFields } from "../../../utils/type/type";
 import {
   ReportFormSchema,
   reportFormSchemas,
@@ -23,7 +24,7 @@ const DairyReport = () => {
     console.log("フォームデータ:", data);
   };
 
-  const fields = [
+  const fields: ReportFields[] = [
     { name: "title", label: "タイトル" },
     { name: "submissionDate", label: "提出日", type: "date" },
     { name: "content", label: "入力テキスト", multiline: true, rows: 4 },
