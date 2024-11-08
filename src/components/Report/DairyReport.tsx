@@ -1,22 +1,22 @@
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Box, Container } from "@mui/material";
 import { useForm } from "react-hook-form";
-import { reportDefoValue } from "../../../utils/initialValues/initialValues";
-import { ReportFields } from "../../../utils/type/type";
+import { reportDefoValue } from "../../utils/initialValues/initialValues";
+import { ReportFields } from "../../utils/type/type";
 import {
   ReportFormSchema,
   reportFormSchemas,
-} from "../../../utils/zodSchema/reportForm";
+} from "../../utils/zodSchema/reportForm";
 import ReportForm from "./ReportForm";
 
-const BookReport = () => {
-  const formTitle = "読書感想文";
+const DairyReport = () => {
+  const formTitle = "業務日報";
   const {
     handleSubmit,
     control,
     formState: { errors },
   } = useForm<ReportFormSchema>({
-    resolver: zodResolver(reportFormSchemas.BookReport),
+    resolver: zodResolver(reportFormSchemas.DairyReport),
     defaultValues: reportDefoValue,
   });
 
@@ -26,7 +26,6 @@ const BookReport = () => {
 
   const fields: ReportFields[] = [
     { name: "title", label: "タイトル" },
-    { name: "bookTitle", label: "書籍名" },
     { name: "submissionDate", label: "提出日", type: "date" },
     { name: "content", label: "入力テキスト", multiline: true, rows: 4 },
     { name: "reporter", label: "報告者" },
@@ -59,4 +58,4 @@ const BookReport = () => {
   );
 };
 
-export default BookReport;
+export default DairyReport;

@@ -20,7 +20,7 @@ const Header = () => {
     { text: "Top", url: "/" },
     { text: "Master", url: "master" },
     { text: "Report", url: "report" },
-    { text: "Production", url: "/production" },
+    { text: "Wiki", url: "/wiki" },
     { text: "Contact", url: "/contact" },
     { text: "Blog", url: "/blog" },
   ];

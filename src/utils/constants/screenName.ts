@@ -22,4 +22,7 @@ export const pathScreenSet: ScreenPath = {
   "/report/bookReport": {
     name: "BookReport",
   },
+  "/wiki":{
+    name: "Wiki"
+  }
 };

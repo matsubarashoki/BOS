@@ -6,7 +6,7 @@ import {
   FieldErrors,
   UseFormHandleSubmit,
 } from "react-hook-form";
-import { ReportFormSchema } from "../../../utils/zodSchema/reportForm";
+import { ReportFormSchema } from "../../utils/zodSchema/reportForm";
 
 interface ReportFormProps {
   formTitle: string;

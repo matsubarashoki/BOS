@@ -9,7 +9,7 @@ import {
   useTheme,
 } from "@mui/material";
 import { useNavigate } from "react-router-dom";
-import { ReportsArray } from "../../../utils/mock/ReportsArray";
+import { ReportsArray } from "../../utils/mock/ReportsArray";
 
 const ReportCard = styled(Card)(() => ({
   width: "100%",
