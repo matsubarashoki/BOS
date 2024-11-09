@@ -39,8 +39,8 @@ const BookReport = () => {
         display={"flex"}
         justifyContent={"center"}
         sx={{
-          width: "80%",
-          maxWidth: 500,
+          width: "100%",
+          maxWidth: 600,
           margin: "0 auto",
           padding: 2,
           bgcolor: "#fff",

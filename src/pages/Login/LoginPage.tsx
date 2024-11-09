@@ -12,13 +12,13 @@ import { styled } from "@mui/material/styles";
 import TextField from "@mui/material/TextField";
 import Typography from "@mui/material/Typography";
 
+import SettingsApplicationsTwoToneIcon from "@mui/icons-material/SettingsApplicationsTwoTone";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../../route/routeAuthHooks";
 import AppTheme from "../../theme/AppTheme";
 import ColorModeSelect from "../../theme/colorModeSelect";
 import { testUsers } from "../../utils/mock/Users";
-import { SitemarkIcon } from "./CustomIcons";
 import ForgotPassword from "./ForgetPassword";
 
 const Card = styled(MuiCard)(({ theme }) => ({
@@ -139,7 +139,21 @@ export default function SignIn(props: { disableCustomTheme?: boolean }) {
           sx={{ position: "fixed", top: "1rem", right: "1rem" }}
         />
         <Card variant="outlined">
-          <SitemarkIcon />
+          <Box display={"flex"}>
+            <SettingsApplicationsTwoToneIcon
+              sx={{ fontSize: "clamp(2rem, 10vw, 2.15rem)", margin: 1 }}
+            />
+            <Typography
+              component="h2"
+              variant="h4"
+              sx={{ width: "100%", fontSize: "clamp(2rem, 10vw, 2.15rem)" }}
+            >
+              Bos
+            </Typography>
+            <Typography component="h5" variant="h6" sx={{ width: "100%" }}>
+              Bussiness Operation System
+            </Typography>
+          </Box>
           <Typography
             component="h1"
             variant="h4"

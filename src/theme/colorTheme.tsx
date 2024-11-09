@@ -32,6 +32,7 @@ export const colorTheme = createTheme({
     primary: {
       main: teal[500],
       light: teal[300],
+      contrastText: "#ebfaf9",
     },
     secondary: {
       main: "#007bb2",
