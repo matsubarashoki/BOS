@@ -2,15 +2,22 @@ import MailIcon from "@mui/icons-material/Mail";
 import InboxIcon from "@mui/icons-material/MoveToInbox";
 import { useTheme } from "@mui/material";
 import Box from "@mui/material/Box";
-import Divider from "@mui/material/Divider";
 import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
 import ListItemButton from "@mui/material/ListItemButton";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
+import { Dispatch, SetStateAction } from "react";
 
-const WikiMenuList = () => {
+interface WikiMenuListProps {
+  setIsEditerOpen: Dispatch<SetStateAction<boolean>>;
+}
+
+const WikiMenuList = ({ setIsEditerOpen }: WikiMenuListProps) => {
   const theme = useTheme();
+  const handleListItemClick = () => {
+    setIsEditerOpen(true);
+  };
   return (
     <Box
       sx={{
@@ -19,32 +26,28 @@ const WikiMenuList = () => {
         bgcolor: theme.palette.primary.contrastText,
       }}
       role="presentation"
-      // onClick={}
     >
       <List>
-        {["Inbox", "Starred", "Send email", "Drafts"].map((text, index) => (
-          <ListItem key={text} disablePadding>
-            <ListItemButton>
-              <ListItemIcon>
-                {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-              </ListItemIcon>
-              <ListItemText primary={text} />
-            </ListItemButton>
-          </ListItem>
-        ))}
-      </List>
-      <Divider />
-      <List>
-        {["All mail", "Trash", "Spam"].map((text, index) => (
-          <ListItem key={text} disablePadding>
-            <ListItemButton>
-              <ListItemIcon>
-                {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-              </ListItemIcon>
-              <ListItemText primary={text} />
-            </ListItemButton>
-          </ListItem>
-        ))}
+        {["Wikiの使い方", "Java", "JavaScript", "TypeScript", "React"].map(
+          (text, index) => (
+            <ListItem
+              key={text}
+              sx={{
+                height: "25px",
+              }}
+            >
+              <ListItemButton
+                sx={{ height: "25px" }}
+                onClick={handleListItemClick}
+              >
+                <ListItemIcon>
+                  {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
+                </ListItemIcon>
+                <ListItemText primary={text} />
+              </ListItemButton>
+            </ListItem>
+          )
+        )}
       </List>
     </Box>
   );

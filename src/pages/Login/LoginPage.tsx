@@ -88,11 +88,9 @@ export default function SignIn(props: { disableCustomTheme?: boolean }) {
       return;
     }
     const data = new FormData(event.currentTarget);
-    console.log(data);
     const loginUser = testUsers.find(
       (user) => user.email === data.get("email")
     );
-    console.log(loginUser);
 
     if (!loginUser) {
       console.error("Invalid credentials");
