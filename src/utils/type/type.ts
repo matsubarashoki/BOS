@@ -56,3 +56,12 @@ export interface ReportFields {
   multiline?: boolean;
   rows?: number;
 }
+
+export interface WikiType {
+  id: number;
+  parentsId: number | null;
+  key: string;
+  title: string;
+  contents: string;
+  children?: WikiType[];
+}

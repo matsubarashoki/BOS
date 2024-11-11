@@ -1,10 +1,10 @@
 import { Box, Button } from "@mui/material";
 import MDEditor from "@uiw/react-md-editor";
 import { useRef, useState } from "react";
-import WikiMenuList from "./WikiDrawer";
+import WikiMenuList from "./WikiMenuList";
 
 const WikiTop = () => {
-  const [value, setValue] = useState<string | undefined>("**Hello world!!!**");
+  const [value, setValue] = useState<string | null>("**Hello world!!!**");
   const [isEditerOpen, setIsEditerOpen] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
 
@@ -18,7 +18,7 @@ const WikiTop = () => {
           justifyContent: "flex-start",
         }}
       >
-        <WikiMenuList setIsEditerOpen={setIsEditerOpen} />
+        <WikiMenuList setIsEditerOpen={setIsEditerOpen} setValue={setValue} />
       </Box>
       <Box
         justifyContent={"flex-end"}
@@ -33,7 +33,7 @@ const WikiTop = () => {
         </Box>
         <div data-color-mode="light">
           <MDEditor
-            value={value}
+            value={value as string}
             preview={isEditerOpen ? "live" : "preview"}
             height={500} // エディタの高さを指定
             style={{ height: 500 }} // インラインスタイルで高さを調整
