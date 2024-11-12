@@ -2,6 +2,8 @@ import { Box, Button } from "@mui/material";
 import MDEditor from "@uiw/react-md-editor";
 import { useRef, useState } from "react";
 import WikiMenuList from "./WikiMenuList";
+import Test from "./Test"
+
 
 const WikiTop = () => {
   const [value, setValue] = useState<string | null>("**Hello world!!!**");
@@ -9,6 +11,7 @@ const WikiTop = () => {
   const containerRef = useRef<HTMLDivElement>(null);
 
   return (
+    <>
     <Box display={"flex"} minHeight={"calc(100vh - 200px)"}>
       <Box
         ref={containerRef}
@@ -43,7 +46,10 @@ const WikiTop = () => {
           />
         </div>
       </Box>
+
     </Box>
+    <Test />
+</>
   );
 };
 
