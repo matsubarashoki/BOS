@@ -1,17 +1,18 @@
 import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
 import Master from "../components/Master/Master";
 import OrgManagement from "../components/Master/OrgManagement/OrgManagement";
+import UserManagement from "../components/Master/UserManagement/UserManagement";
+import BookReport from "../components/Report/BookReport";
+import BookReportList from "../components/Report/BookReportList";
 import DairyReport from "../components/Report/DairyReport";
 import Report from "../components/Report/Report";
-import UserManagement from "../components/Master/UserManagement/UserManagement";
+import WikiTop from "../components/Wiki/WikiTop";
 import HomePage from "../pages/HomePage";
 import Layout from "../pages/Layout";
 import LoginPage from "../pages/Login/LoginPage";
 import { NotFound } from "../pages/NotFound";
 import ProtectedRoute from "./protectedRoute";
 import { useAuth } from "./routeAuthHooks";
-import BookReport from "../components/Report/BookReport";
-import WikiTop from "../components/Wiki/WikiTop";
 
 export const RouterConfig = () => {
   const { user } = useAuth();
@@ -40,9 +41,13 @@ export const RouterConfig = () => {
             <Route path="bookReport" element={<BookReport />} />
           </Route>
 
+          <Route path="reportList">
+            <Route index={true} element={<Report />} />
+            <Route path="bookReport" element={<BookReportList />} />
+          </Route>
+
           <Route path="wiki">
             <Route index={true} element={<WikiTop />} />
-
           </Route>
         </Route>
 

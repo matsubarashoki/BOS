@@ -4,7 +4,7 @@ import { z } from "zod";
 const baseReportFormSchema = z.object({
   reportId: z.string().nullable().optional(),
   title: z.string().min(1, { message: "タイトルは必須です" }),
-  submissionDate: z.date(),
+  submissionDate: z.string(),
   content: z
     .string()
     .min(1, { message: "必須です" })

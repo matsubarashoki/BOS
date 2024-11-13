@@ -1,6 +1,8 @@
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Box, Container } from "@mui/material";
 import { useForm } from "react-hook-form";
+import { useNavigate } from "react-router-dom";
+import useReportStore from "../../store/reportStore";
 import { reportDefoValue } from "../../utils/initialValues/initialValues";
 import { ReportFields } from "../../utils/type/type";
 import {
@@ -11,6 +13,8 @@ import ReportForm from "./ReportForm";
 
 const BookReport = () => {
   const formTitle = "読書感想文";
+  const { addReport } = useReportStore();
+  const navigate = useNavigate();
   const {
     handleSubmit,
     control,
@@ -22,6 +26,10 @@ const BookReport = () => {
 
   const onSubmit = (data: ReportFormSchema) => {
     console.log("フォームデータ:", data);
+    // IdとreportTypeをschemaに追加
+    // Listの汎用化
+    addReport(data);
+    navigate("/report");
   };
 
   const fields: ReportFields[] = [

@@ -40,6 +40,11 @@ const Report = () => {
     navigate(path);
   };
 
+  const handleList = (reportType: string) => {
+    const path = "/reportList/" + reportType;
+    navigate(path);
+  };
+
   return (
     <Container className="report-container" sx={{ paddingY: 2 }}>
       <Box
@@ -86,6 +91,7 @@ const Report = () => {
                   sx={{
                     backgroundColor: theme.palette.secondary.main,
                   }}
+                  onClick={() => handleList(reports.reportType)}
                 >
                   確認
                 </ReportButton>
