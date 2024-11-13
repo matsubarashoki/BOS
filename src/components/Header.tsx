@@ -43,6 +43,8 @@ const Header = () => {
   };
 
   const handleLogout = () => {
+    localStorage.removeItem("loginUser")
+
     setUser(null);
   };
   return (
