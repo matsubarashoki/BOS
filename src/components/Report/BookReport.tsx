@@ -10,6 +10,7 @@ import {
   reportFormSchemas,
 } from "../../utils/zodSchema/reportForm";
 import ReportForm from "./ReportForm";
+import { useEffect } from "react";
 
 const BookReport = () => {
   const formTitle = "読書感想文";
@@ -18,6 +19,7 @@ const BookReport = () => {
   const {
     handleSubmit,
     control,
+    setValue,
     formState: { errors },
   } = useForm<ReportFormSchema>({
     resolver: zodResolver(reportFormSchemas.BookReport),
@@ -26,8 +28,6 @@ const BookReport = () => {
 
   const onSubmit = (data: ReportFormSchema) => {
     console.log("フォームデータ:", data);
-    // IdとreportTypeをschemaに追加
-    // Listの汎用化
     addReport(data);
     navigate("/report");
   };
@@ -41,6 +41,10 @@ const BookReport = () => {
     { name: "recipient", label: "宛先" },
   ];
 
+  useEffect(()=>{
+    setValue("reportType",formTitle);
+
+  },[])
   return (
     <Container sx={{ paddingY: 2 }}>
       <Box
@@ -56,6 +60,7 @@ const BookReport = () => {
       >
         <ReportForm
           formTitle={formTitle}
+
           fields={fields}
           control={control}
           errors={errors}

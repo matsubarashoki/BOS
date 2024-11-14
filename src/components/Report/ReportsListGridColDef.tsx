@@ -7,7 +7,13 @@ export const reportsColumns: GridColDef[] = [
     headerName: "ID",
     width: 50,
     type: "string",
+  }, 
+  {
+    field: "reportTitle",
+    headerName: "ReportType",
+    width: 200,
   },
+ 
   {
     field: "title",
     headerName: "タイトル",
@@ -16,7 +22,7 @@ export const reportsColumns: GridColDef[] = [
   {
     field: "submissionDate",
     headerName: "提出日",
-    width: 100,
+    width: 120,
   },
   {
     field: "reporter",

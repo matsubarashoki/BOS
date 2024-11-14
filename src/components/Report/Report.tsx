@@ -41,7 +41,7 @@ const Report = () => {
   };
 
   const handleList = (reportType: string) => {
-    const path = "/reportList/" + reportType;
+    const path = "/reportList";
     navigate(path);
   };
 

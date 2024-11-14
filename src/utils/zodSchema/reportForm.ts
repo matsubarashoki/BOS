@@ -11,6 +11,7 @@ const baseReportFormSchema = z.object({
     .max(1500, "入力テキストは1500文字以内で入力してください。"),
   reporter: z.string().min(1, { message: "報告者は必須です" }),
   recipient: z.string().min(1, { message: "報告先は必須です" }),
+  reportType: z.string().min(1, { message: "報告先は必須です" }),
 });
 
 // DairyReport用の拡張スキーマ（必要に応じて他のレポート用に追加）

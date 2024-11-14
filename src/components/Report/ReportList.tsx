@@ -3,7 +3,7 @@ import { DataGrid, GridToolbar } from "@mui/x-data-grid";
 import useReportStore from "../../store/reportStore";
 import { reportsColumns } from "./ReportsListGridColDef";
 
-const BookReportList = () => {
+const ReportList = () => {
   const { reports } = useReportStore();
   return (
     <Container maxWidth={false}>
@@ -22,4 +22,4 @@ const BookReportList = () => {
   );
 };
 
-export default BookReportList;
+export default ReportList;

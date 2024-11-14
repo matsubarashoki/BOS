@@ -30,6 +30,7 @@ const ReportForm: React.FC<ReportFormProps> = ({
   errors,
   submit,
   handleSubmit,
+
 }) => {
   return (
     <Box

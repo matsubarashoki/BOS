@@ -8,13 +8,20 @@ import {
   reportFormSchemas,
 } from "../../utils/zodSchema/reportForm";
 import ReportForm from "./ReportForm";
+import useReportStore from "../../store/reportStore";
+import { useNavigate } from "react-router-dom";
+import { useEffect, useLayoutEffect } from "react";
 
 const DairyReport = () => {
   const formTitle = "業務日報";
+  const { addReport } = useReportStore();
+  const navigate = useNavigate();
+  
   const {
     handleSubmit,
     control,
     formState: { errors },
+    setValue,
   } = useForm<ReportFormSchema>({
     resolver: zodResolver(reportFormSchemas.DairyReport),
     defaultValues: reportDefoValue,
@@ -22,6 +29,10 @@ const DairyReport = () => {
 
   const onSubmit = (data: ReportFormSchema) => {
     console.log("フォームデータ:", data);
+ 
+
+    addReport(data);
+    navigate("/report");
   };
 
   const fields: ReportFields[] = [
@@ -31,7 +42,11 @@ const DairyReport = () => {
     { name: "reporter", label: "報告者" },
     { name: "recipient", label: "宛先" },
   ];
+  useEffect(()=>{
+    setValue("reportType",formTitle)
 
+  },[])
+  
   return (
     <Container sx={{ paddingY: 2 }}>
       <Box

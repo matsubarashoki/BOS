@@ -3,7 +3,7 @@ import Master from "../components/Master/Master";
 import OrgManagement from "../components/Master/OrgManagement/OrgManagement";
 import UserManagement from "../components/Master/UserManagement/UserManagement";
 import BookReport from "../components/Report/BookReport";
-import BookReportList from "../components/Report/BookReportList";
+
 import DairyReport from "../components/Report/DairyReport";
 import Report from "../components/Report/Report";
 import WikiTop from "../components/Wiki/WikiTop";
@@ -13,6 +13,7 @@ import LoginPage from "../pages/Login/LoginPage";
 import { NotFound } from "../pages/NotFound";
 import ProtectedRoute from "./protectedRoute";
 import { useAuth } from "./routeAuthHooks";
+import ReportList from "../components/Report/ReportList";
 
 export const RouterConfig = () => {
   const { user } = useAuth();
@@ -42,8 +43,7 @@ export const RouterConfig = () => {
           </Route>
 
           <Route path="reportList">
-            <Route index={true} element={<Report />} />
-            <Route path="bookReport" element={<BookReportList />} />
+            <Route index={true} element={<ReportList />} />
           </Route>
 
           <Route path="wiki">
