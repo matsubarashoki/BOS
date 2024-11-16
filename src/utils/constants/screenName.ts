@@ -28,4 +28,7 @@ export const pathScreenSet: ScreenPath = {
   "/wiki": {
     name: "Wiki",
   },
+  "/userSettings": {
+    name: "UserSettings"
+  }
 };

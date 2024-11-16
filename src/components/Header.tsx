@@ -14,13 +14,14 @@ import {
   useTheme,
 } from "@mui/material";
 import { useRef, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../route/routeAuthHooks";
 
 const Header = () => {
   const theme = useTheme();
   const { setUser } = useAuth();
   const textColor = theme.palette.primary.main;
+  const navigate = useNavigate();
   const setNavLinks: Array<{ text: string; url: string }> = [
     { text: "Top", url: "/" },
     { text: "Master", url: "master" },
@@ -41,10 +42,11 @@ const Header = () => {
   const handleClose = () => {
     setOpen(false);
   };
-
+  const handleUserSettings = () => {
+    navigate("/userSettings")
+  }
   const handleLogout = () => {
     localStorage.removeItem("loginUser")
-
     setUser(null);
   };
   return (
@@ -157,7 +159,7 @@ const Header = () => {
             }}
             MenuListProps={{}}
           >
-            <MenuItem onClick={handleClose}>アカウント設定</MenuItem>
+            <MenuItem onClick={handleUserSettings}>アカウント設定</MenuItem>
             <MenuItem onClick={handleLogout}>ログアウト</MenuItem>
           </Menu>{" "}
         </Box>

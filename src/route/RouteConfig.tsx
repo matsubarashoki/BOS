@@ -14,6 +14,7 @@ import { NotFound } from "../pages/NotFound";
 import ProtectedRoute from "./protectedRoute";
 import { useAuth } from "./routeAuthHooks";
 import ReportList from "../components/Report/ReportList";
+import UserSettings from "../components/UserSettings/UserSettings";
 
 export const RouterConfig = () => {
   const { user } = useAuth();
@@ -48,6 +49,9 @@ export const RouterConfig = () => {
 
           <Route path="wiki">
             <Route index={true} element={<WikiTop />} />
+          </Route>
+          <Route path="userSettings">
+            <Route index={true} element={<UserSettings />} />
           </Route>
         </Route>
 
