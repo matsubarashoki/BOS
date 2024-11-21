@@ -1,4 +1,15 @@
-import { Box, Button, Dialog, DialogActions, DialogContent, IconButton, Menu, MenuItem, useTheme } from "@mui/material";
+import { MoreVert } from "@mui/icons-material";
+import {
+  Box,
+  Button,
+  Dialog,
+  DialogActions,
+  DialogContent,
+  IconButton,
+  Menu,
+  MenuItem,
+  useTheme,
+} from "@mui/material";
 import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
 import ListItemButton from "@mui/material/ListItemButton";
@@ -6,7 +17,6 @@ import ListItemText from "@mui/material/ListItemText";
 import { Dispatch, SetStateAction, useState } from "react";
 import { WikiRecords } from "../../utils/mock/Wiki";
 import { WikiType } from "../../utils/type/type";
-import { MoreVert } from "@mui/icons-material";
 
 interface WikiMenuListProps {
   setIsEditerOpen: Dispatch<SetStateAction<boolean>>;
@@ -33,9 +43,9 @@ const WikiMenuList = ({ setIsEditerOpen, setValue }: WikiMenuListProps) => {
   };
 
   const handleWikiAdd = () => {
-    setIsEditerOpen(true)
-    setValue("")
-  }
+    setIsEditerOpen(true);
+    setValue("");
+  };
 
   // 階層構造を作成
   function buildHierarchy(wikis: WikiType[]): WikiType[] {
@@ -100,14 +110,16 @@ const WikiMenuList = ({ setIsEditerOpen, setValue }: WikiMenuListProps) => {
               PaperProps={{
                 style: {
                   maxHeight: 48 * 4.5, // メニューの高さを調整
-                  width: '20ch',
+                  width: "20ch",
                 },
               }}
             >
               <MenuItem onClick={handleWikiAdd}>追加</MenuItem>
-              <MenuItem onClick={() =>
-                handleListItemClick(node.contents)}>編集</MenuItem>
-              <MenuItem onClick={() => setDeleteDialogOpen(true)}>削除
+              <MenuItem onClick={() => handleListItemClick(node.contents)}>
+                編集
+              </MenuItem>
+              <MenuItem onClick={() => setDeleteDialogOpen(true)}>
+                削除
               </MenuItem>
             </Menu>
           </div>
@@ -131,12 +143,12 @@ const WikiMenuList = ({ setIsEditerOpen, setValue }: WikiMenuListProps) => {
       <Dialog open={deleteDiqlogOpen}>
         <DialogContent>本当に削除しますか?</DialogContent>
         <DialogActions>
-          <Button onClick={}>キャンセル</Button>
-          <Button>削除</Button></DialogActions>
+          <Button onClick={() => setDeleteDialogOpen(false)}>キャンセル</Button>
+          <Button>削除</Button>
+        </DialogActions>
       </Dialog>
     </Box>
   );
 };
 
 export default WikiMenuList;
-

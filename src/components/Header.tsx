@@ -27,7 +27,7 @@ const Header = () => {
     { text: "Master", url: "master" },
     { text: "Report", url: "report" },
     { text: "Wiki", url: "/wiki" },
-    { text: "Contact", url: "/contact" },
+    { text: "ManagementPlan", url: "/managementPlan" },
     { text: "Blog", url: "/blog" },
   ];
   // メニューの開閉を管理
@@ -43,10 +43,10 @@ const Header = () => {
     setOpen(false);
   };
   const handleUserSettings = () => {
-    navigate("/userSettings")
-  }
+    navigate("/userSettings");
+  };
   const handleLogout = () => {
-    localStorage.removeItem("loginUser")
+    localStorage.removeItem("loginUser");
     setUser(null);
   };
   return (

@@ -29,6 +29,9 @@ export const pathScreenSet: ScreenPath = {
     name: "Wiki",
   },
   "/userSettings": {
-    name: "UserSettings"
-  }
+    name: "UserSettings",
+  },
+  "/managementPlan": {
+    name: "経営計画",
+  },
 };

@@ -4,8 +4,11 @@ import OrgManagement from "../components/Master/OrgManagement/OrgManagement";
 import UserManagement from "../components/Master/UserManagement/UserManagement";
 import BookReport from "../components/Report/BookReport";
 
+import ManagementPlanTop from "../components/ManagementPlan/ManagementPlanTop";
 import DairyReport from "../components/Report/DairyReport";
 import Report from "../components/Report/Report";
+import ReportList from "../components/Report/ReportList";
+import UserSettings from "../components/UserSettings/UserSettings";
 import WikiTop from "../components/Wiki/WikiTop";
 import HomePage from "../pages/HomePage";
 import Layout from "../pages/Layout";
@@ -13,8 +16,6 @@ import LoginPage from "../pages/Login/LoginPage";
 import { NotFound } from "../pages/NotFound";
 import ProtectedRoute from "./protectedRoute";
 import { useAuth } from "./routeAuthHooks";
-import ReportList from "../components/Report/ReportList";
-import UserSettings from "../components/UserSettings/UserSettings";
 
 export const RouterConfig = () => {
   const { user } = useAuth();
@@ -50,8 +51,13 @@ export const RouterConfig = () => {
           <Route path="wiki">
             <Route index={true} element={<WikiTop />} />
           </Route>
+
           <Route path="userSettings">
             <Route index={true} element={<UserSettings />} />
+          </Route>
+
+          <Route path="managementPlan">
+            <Route index={true} element={<ManagementPlanTop />} />
           </Route>
         </Route>
 
