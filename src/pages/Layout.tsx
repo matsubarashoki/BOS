@@ -37,8 +37,12 @@ const Layout = () => {
       >
         <Toolbar
           sx={{
+            position: "static",
+            width: "100%",
+            marginTop: "64px",
             backgroundColor: theme.palette.primary.light,
             justifyContent: "center",
+            zIndex: (theme) => theme.zIndex.drawer + 1, // Drawerの上に配置
           }}
         >
           <Box

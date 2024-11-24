@@ -52,8 +52,13 @@ const Header = () => {
   return (
     <AppBar
       component="header"
-      position="static"
-      sx={{ top: 0, width: "100%", backgroundColor: "white" }}
+      position="fixed"
+      sx={{
+        top: 0,
+        width: "100%",
+        backgroundColor: "white",
+        zIndex: (theme) => theme.zIndex.drawer + 1, // Drawerの上に配置
+      }}
     >
       <Box display={"flex"} sx={{ width: "100%" }}>
         <Box
