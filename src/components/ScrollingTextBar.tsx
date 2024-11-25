@@ -11,7 +11,7 @@ const ScrollingTextBar: React.FC = () => {
         display: "flex",
         alignItems: "center",
         overflow: "hidden", // テキストがはみ出さないように隠す
-        backgroundColor: theme.palette.baseColor.main, // バックグラウンド色
+        backgroundColor: theme.palette.primary.light, // バックグラウンド色
         color: "#fff", // テキストの色
         height: 50, // 高さを設定
       }}

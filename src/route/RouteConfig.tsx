@@ -4,6 +4,10 @@ import OrgManagement from "../components/Master/OrgManagement/OrgManagement";
 import UserManagement from "../components/Master/UserManagement/UserManagement";
 import BookReport from "../components/Report/BookReport";
 
+import ManagementPlanAnalyze from "../components/ManagementPlan/ManagementPlanAnalyze";
+import ManagementPlanAssessment from "../components/ManagementPlan/ManagementPlanAssessment";
+import ManagementPlanCreate from "../components/ManagementPlan/ManagementPlanCreate";
+import ManagementPlanHistory from "../components/ManagementPlan/ManagementPlanHistory";
 import ManagementPlanTop from "../components/ManagementPlan/ManagementPlanTop";
 import DairyReport from "../components/Report/DairyReport";
 import Report from "../components/Report/Report";
@@ -58,6 +62,10 @@ export const RouterConfig = () => {
 
           <Route path="managementPlan">
             <Route index={true} element={<ManagementPlanTop />} />
+            <Route path="create" element={<ManagementPlanCreate />} />
+            <Route path="analyze" element={<ManagementPlanAnalyze />} />
+            <Route path="assessment" element={<ManagementPlanAssessment />} />
+            <Route path="history" element={<ManagementPlanHistory />} />
           </Route>
         </Route>
 

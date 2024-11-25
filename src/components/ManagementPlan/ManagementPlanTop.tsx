@@ -119,7 +119,7 @@ const ManagementPlanTop = () => {
             <StyledCard sx={{ margin: 1, bgcolor: "#fff" }}>
               <CardActionArea
                 component={Link}
-                to="/master/userManagement"
+                to="/managementPlan/create"
                 sx={{ height: "100%" }}
               >
                 <CardContent
@@ -145,7 +145,7 @@ const ManagementPlanTop = () => {
             <StyledCard sx={{ margin: 1, bgcolor: "#fff" }}>
               <CardActionArea
                 component={Link}
-                to="/master/orgManagement"
+                to="/managementPlan/analyze"
                 sx={{ height: "100%" }}
               >
                 <CardContent
@@ -171,7 +171,7 @@ const ManagementPlanTop = () => {
             <StyledCard sx={{ margin: 1, bgcolor: "#fff" }}>
               <CardActionArea
                 component={Link}
-                to="/destination"
+                to="/managementPlan/assessment"
                 sx={{ height: "100%" }}
               >
                 <CardContent
@@ -197,7 +197,7 @@ const ManagementPlanTop = () => {
             <StyledCard sx={{ margin: 1, bgcolor: "#fff" }}>
               <CardActionArea
                 component={Link}
-                to="/destination"
+                to="/managementPlan/history"
                 sx={{ height: "100%" }}
               >
                 <CardContent

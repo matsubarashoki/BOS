@@ -1,21 +1,12 @@
-import { Box, Toolbar, Typography, useTheme } from "@mui/material";
-import { useEffect } from "react";
-import { Outlet, useLocation } from "react-router-dom";
+import { Box, useTheme } from "@mui/material";
+import { useState } from "react";
+import { Outlet } from "react-router-dom";
 import Footer from "../components/Footer";
 import Header from "../components/Header";
-import { useScreenNameStore } from "../store/screenNameStore";
-import { pathScreenSet } from "../utils/constants/screenName";
 
 const Layout = () => {
   const theme = useTheme();
-  const { pathname } = useLocation();
-  const { screenName, setScreenName } = useScreenNameStore();
-
-  useEffect(() => {
-    if (pathScreenSet[pathname].name) {
-      setScreenName(pathScreenSet[pathname].name);
-    }
-  }, [pathname]);
+  const [contentMarginTop, setContentMarginTop] = useState(0);
 
   return (
     <Box
@@ -25,45 +16,17 @@ const Layout = () => {
       minHeight={"100vh"}
     >
       <header>
-        <Header />
+        <Header setContentMarginTop={setContentMarginTop} />
       </header>
       <Box
         component={"main"}
         className="main-container"
         sx={{
+          marginTop: `${contentMarginTop}px`,
           backgroundColor: theme.palette.subColor.main,
           flexGrow: 1,
         }}
       >
-        <Toolbar
-          sx={{
-            position: "static",
-            width: "100%",
-            marginTop: "64px",
-            backgroundColor: theme.palette.primary.light,
-            justifyContent: "center",
-            zIndex: (theme) => theme.zIndex.drawer + 1, // Drawerの上に配置
-          }}
-        >
-          <Box
-            className="master-box"
-            display={"flex"}
-            // width={"80%"}
-            justifyContent={"center"}
-            margin={1}
-          >
-            <Typography
-              justifyContent={"center"}
-              variant="h5"
-              component="h3"
-              gutterBottom
-              sx={{ my: 2 }}
-              color="#fff"
-            >
-              {screenName}
-            </Typography>
-          </Box>
-        </Toolbar>
         <Outlet />
       </Box>
       <footer>

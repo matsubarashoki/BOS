@@ -20,7 +20,7 @@ const Footer = () => {
       >
         <Container maxWidth="md">
           <Box sx={{ textAlign: "center" }}>
-            <Typography variant="caption">©2023 engr-sng</Typography>
+            <Typography variant="caption">©2024 bos</Typography>
           </Box>
         </Container>
       </AppBar>

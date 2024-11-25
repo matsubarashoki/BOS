@@ -34,4 +34,16 @@ export const pathScreenSet: ScreenPath = {
   "/managementPlan": {
     name: "経営計画",
   },
+  "/managementPlan/create": {
+    name: "経営計画 作成",
+  },
+  "/managementPlan/analyze": {
+    name: "経営計画 分析",
+  },
+  "/managementPlan/assessment": {
+    name: "経営計画 評価",
+  },
+  "/managementPlan/history": {
+    name: "経営計画 履歴参照",
+  },
 };
