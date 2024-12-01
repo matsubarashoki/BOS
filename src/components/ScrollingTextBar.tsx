@@ -1,9 +1,11 @@
 import { useTheme } from "@mui/material";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
-import React from "react";
 
-const ScrollingTextBar: React.FC = () => {
+interface ScrollingTextBarProps {
+  text: string;
+}
+const ScrollingTextBar = ({ text }: ScrollingTextBarProps) => {
   const theme = useTheme();
   return (
     <Box
@@ -20,11 +22,11 @@ const ScrollingTextBar: React.FC = () => {
         variant="h6"
         sx={{
           whiteSpace: "nowrap", // テキストを一行に収める
-          animation: "scroll-text 10s linear infinite", // アニメーション設定
+          animation: "scroll-text 30s linear infinite", // アニメーション設定
           paddingLeft: "100%", // 最初にテキストが画面外から入ってくるように
         }}
       >
-        ここにスクロールするテキストを配置します。いくつかの情報を流すことができます！
+        {text}
       </Typography>
 
       {/* CSSアニメーション */}

@@ -9,11 +9,30 @@ import {
   Typography,
   useTheme,
 } from "@mui/material";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import { headerHeightStore } from "../../store/headerHeightStore";
+import { koronazidainokeieikokoroe } from "../../utils/mock/koronazidainokeieikokoroe";
 import ScrollingTextBar from "../ScrollingTextBar";
 import NewsTable from "./NewsTable";
 
 const ManagementPlanTop = () => {
+  const { headerHeight } = headerHeightStore();
+  const [text, setText] = useState<string>(koronazidainokeieikokoroe[0]);
+  function getRandomValue(obj: { [key: number]: string }) {
+    console.log("ランダムな値を取得し始めます...");
+    console.log(text);
+    setInterval(() => {
+      const keys = Object.keys(obj); // オブジェクトのキーを取得 (文字列の配列)
+      const randomIndex = Math.floor(Math.random() * keys.length); // ランダムなインデックスを生成
+      const randomKey = keys[randomIndex]; // ランダムなキーを取得
+      setText(obj[Number(randomKey)]); // キーに対応する値を返す
+    }, 60 * 1000); // 1分（60秒 × 1000ミリ秒）
+  }
+  useEffect(() => {
+    getRandomValue(koronazidainokeieikokoroe);
+  }, []);
+
   const theme = useTheme();
   const today = new Date().toLocaleDateString("ja-JP");
   const StyledCard = styled(Card)(() => ({
@@ -23,8 +42,8 @@ const ManagementPlanTop = () => {
   }));
 
   return (
-    <>
-      <ScrollingTextBar />
+    <Box marginTop={headerHeight}>
+      <ScrollingTextBar text={text} />
 
       <Box
         sx={{ bgcolor: theme.palette.subColor.main, overflowY: "auto" }}
@@ -227,7 +246,7 @@ const ManagementPlanTop = () => {
           ></Box>
         </Grid2>
       </Box>
-    </>
+    </Box>
   );
 };
 
