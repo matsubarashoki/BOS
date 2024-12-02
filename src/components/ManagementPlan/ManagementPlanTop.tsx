@@ -20,18 +20,17 @@ const ManagementPlanTop = () => {
   const { headerHeight } = headerHeightStore();
   const [text, setText] = useState<string>(koronazidainokeieikokoroe[0]);
   function getRandomValue(obj: { [key: number]: string }) {
-    console.log("ランダムな値を取得し始めます...");
-    console.log(text);
     setInterval(() => {
+      console.log(koronazidainokeieikokoroe);
       const keys = Object.keys(obj); // オブジェクトのキーを取得 (文字列の配列)
       const randomIndex = Math.floor(Math.random() * keys.length); // ランダムなインデックスを生成
       const randomKey = keys[randomIndex]; // ランダムなキーを取得
       setText(obj[Number(randomKey)]); // キーに対応する値を返す
-    }, 60 * 1000); // 1分（60秒 × 1000ミリ秒）
+    }, 30 * 1000); // 1分（60秒 × 1000ミリ秒）
   }
   useEffect(() => {
     getRandomValue(koronazidainokeieikokoroe);
-  }, []);
+  }, [koronazidainokeieikokoroe]);
 
   const theme = useTheme();
   const today = new Date().toLocaleDateString("ja-JP");
@@ -44,7 +43,6 @@ const ManagementPlanTop = () => {
   return (
     <Box marginTop={headerHeight}>
       <ScrollingTextBar text={text} />
-
       <Box
         sx={{ bgcolor: theme.palette.subColor.main, overflowY: "auto" }}
         justifyContent={"center"}

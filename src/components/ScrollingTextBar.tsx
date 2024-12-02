@@ -22,7 +22,7 @@ const ScrollingTextBar = ({ text }: ScrollingTextBarProps) => {
         variant="h6"
         sx={{
           whiteSpace: "nowrap", // テキストを一行に収める
-          animation: "scroll-text 30s linear infinite", // アニメーション設定
+          animation: "scroll-text 20s linear infinite", // アニメーション設定
           paddingLeft: "100%", // 最初にテキストが画面外から入ってくるように
         }}
       >

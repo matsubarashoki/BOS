@@ -5,10 +5,16 @@ import {
   Container,
   IconButton,
   InputLabel,
+  Paper,
   styled,
   TextField,
   Tooltip,
+  Typography,
 } from "@mui/material";
+import { useState } from "react";
+import { GridExample } from "./GridExample";
+import MonthSelector from "./MonthSelector";
+
 const ManagementPlanCreate = () => {
   const StyledBox = styled(Box)(() => ({
     display: "flex",
@@ -22,10 +28,45 @@ const ManagementPlanCreate = () => {
     borderRadius: "8px",
   }));
 
-  return (
-    <Container sx={{ my: 1, alignItems: "center" }}>
-      <Box>計画フォーマット選択</Box>
+  // Row Data Interface
+  interface IRow {
+    target_qualitative: string;
+    target_quantitative: string;
+  }
+  const [rowData, setRowData] = useState<IRow[]>([
+    { target_qualitative: "test", target_quantitative: "test" },
+    { target_qualitative: "", target_quantitative: "" },
+    { target_qualitative: "", target_quantitative: "" },
+  ]);
 
+  // const [columnDefs, setColumnDefs] = useState<
+  //   (ColDef<IRow, any> | ColGroupDef<any>)[]
+  // >([
+  //   { field: "target_qualitative", headerName: "今期目標（定性）" },
+  //   { field: "target_quantitative", headerName: "今期目標（定量）" },
+  // ]);
+
+  // const defaultColDef: ColDef = {
+  //   flex: 1,
+  // };
+
+  // const gridOptions: GridOptions = {
+  //   defaultColDef: {
+  //     editable: true,
+  //   },
+  //   onCellValueChanged: (event: CellValueChangedEvent) => {
+  //     console.log(`New Cell Value: ${event.value}`);
+  //   },
+  // };
+  return (
+    <Container id="create-container" sx={{ my: 2, alignItems: "center" }}>
+      <Box
+        display={"flex"}
+        justifyContent={"flex-start"}
+        sx={{ paddingLeft: 0 }}
+      >
+        <MonthSelector />
+      </Box>
       <StyledBox sx={{ bgcolor: "#fff" }}>
         {/* InputLabel */}
         <Box
@@ -146,10 +187,24 @@ const ManagementPlanCreate = () => {
         />
       </StyledBox>
 
-      <Box>今期目標（定性）</Box>
-      <Box>今期目標（定量）</Box>
-      <Box>KPI</Box>
-      <Box>その他</Box>
+      <Box sx={{ padding: 2, width: "100%" }}>
+        <Paper sx={{ height: 500, width: "100%", bgcolor: "#fff" }}>
+          <Typography
+            variant="h5"
+            component={"h4"}
+            sx={{ marginY: 1, paddingLeft: 1 }}
+          >
+            KPI Grid
+          </Typography>
+
+          <div
+            className="ag-theme-quartz" // applying the Data Grid theme
+            style={{ width: "100%", height: "100%" }}
+          >
+            <GridExample />
+          </div>
+        </Paper>
+      </Box>
     </Container>
   );
 };
