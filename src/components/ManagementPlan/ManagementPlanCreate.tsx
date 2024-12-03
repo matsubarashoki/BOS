@@ -5,14 +5,17 @@ import {
   Container,
   IconButton,
   InputLabel,
-  Paper,
   styled,
   TextField,
   Tooltip,
   Typography,
 } from "@mui/material";
 import { useState } from "react";
-import { GridExample } from "./GridExample";
+import { ActionPlanGridRowData } from "../../utils/mock/ActionPlanGridRowData";
+import { KPIGridRowData } from "../../utils/mock/KPIGridRows";
+import { ActionPlanGridColDefs } from "./ActionPlanGridColDefs";
+import { BaseGrid } from "./BaseGrid";
+import { KPIGridColDefs } from "./KPIGridColDefs";
 import MonthSelector from "./MonthSelector";
 
 const ManagementPlanCreate = () => {
@@ -59,7 +62,10 @@ const ManagementPlanCreate = () => {
   //   },
   // };
   return (
-    <Container id="create-container" sx={{ my: 2, alignItems: "center" }}>
+    <Container
+      id="create-container"
+      sx={{ my: 2, alignItems: "center", py: 1 }}
+    >
       <Box
         display={"flex"}
         justifyContent={"flex-start"}
@@ -187,24 +193,30 @@ const ManagementPlanCreate = () => {
         />
       </StyledBox>
 
-      <Box sx={{ padding: 2, width: "100%" }}>
-        <Paper sx={{ height: 500, width: "100%", bgcolor: "#fff" }}>
-          <Typography
-            variant="h5"
-            component={"h4"}
-            sx={{ marginY: 1, paddingLeft: 1 }}
-          >
-            KPI Grid
-          </Typography>
+      <StyledBox sx={{ bgcolor: "#fff", height: 300 }}>
+        <Typography
+          variant="h5"
+          component={"h4"}
+          sx={{ marginY: 1, paddingLeft: 1 }}
+        >
+          KPI Grid
+        </Typography>
+        <BaseGrid rowData={KPIGridRowData} colDefs={KPIGridColDefs} />
+      </StyledBox>
 
-          <div
-            className="ag-theme-quartz" // applying the Data Grid theme
-            style={{ width: "100%", height: "100%" }}
-          >
-            <GridExample />
-          </div>
-        </Paper>
-      </Box>
+      <StyledBox sx={{ bgcolor: "#fff", height: 300 }}>
+        <Typography
+          variant="h5"
+          component={"h4"}
+          sx={{ marginY: 1, paddingLeft: 1 }}
+        >
+          アクションプラン
+        </Typography>
+        <BaseGrid
+          rowData={ActionPlanGridRowData}
+          colDefs={ActionPlanGridColDefs}
+        />
+      </StyledBox>
     </Container>
   );
 };

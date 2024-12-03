@@ -65,3 +65,17 @@ export interface WikiType {
   contents: string;
   children?: WikiType[];
 }
+
+export interface KPIGridRow {
+  target_qualitative_category: string;
+  target_qualitative: string;
+  target_quantitative_category: string;
+  target_quantitative: string;
+}
+
+export interface ActionPlanGridRow {
+  No: string;
+  contents: string;
+  period: string;
+  remarks: string;
+}
