@@ -10,69 +10,47 @@ import {
   Tooltip,
   Typography,
 } from "@mui/material";
-import { useState } from "react";
-import { ActionPlanGridRowData } from "../../utils/mock/ActionPlanGridRowData";
-import { KPIGridRowData } from "../../utils/mock/KPIGridRows";
+import useManagementPlanStore from "../../store/managementPlanStore";
 import { ActionPlanGridColDefs } from "./ActionPlanGridColDefs";
 import { BaseGrid } from "./BaseGrid";
 import { KPIGridColDefs } from "./KPIGridColDefs";
-import MonthSelector from "./MonthSelector";
 
 const ManagementPlanCreate = () => {
+  const { managementPlan, updateManagementPlan } = useManagementPlanStore();
+
   const StyledBox = styled(Box)(() => ({
     display: "flex",
     flexDirection: "column",
     gap: 2,
     width: "100%",
-    // margin: "0 auto",
     margin: "8px",
     padding: 2,
     border: "1px solid #ccc",
     borderRadius: "8px",
   }));
 
-  // Row Data Interface
-  interface IRow {
-    target_qualitative: string;
-    target_quantitative: string;
-  }
-  const [rowData, setRowData] = useState<IRow[]>([
-    { target_qualitative: "test", target_quantitative: "test" },
-    { target_qualitative: "", target_quantitative: "" },
-    { target_qualitative: "", target_quantitative: "" },
-  ]);
-
-  // const [columnDefs, setColumnDefs] = useState<
-  //   (ColDef<IRow, any> | ColGroupDef<any>)[]
-  // >([
-  //   { field: "target_qualitative", headerName: "今期目標（定性）" },
-  //   { field: "target_quantitative", headerName: "今期目標（定量）" },
-  // ]);
-
-  // const defaultColDef: ColDef = {
-  //   flex: 1,
-  // };
-
-  // const gridOptions: GridOptions = {
-  //   defaultColDef: {
-  //     editable: true,
-  //   },
-  //   onCellValueChanged: (event: CellValueChangedEvent) => {
-  //     console.log(`New Cell Value: ${event.value}`);
-  //   },
-  // };
   return (
     <Container
       id="create-container"
       sx={{ my: 2, alignItems: "center", py: 1 }}
     >
-      <Box
-        display={"flex"}
-        justifyContent={"flex-start"}
-        sx={{ paddingLeft: 0 }}
-      >
-        <MonthSelector />
-      </Box>
+      <StyledBox sx={{ bgcolor: "#fff", width: "20%" }}>
+        <Box
+          display={"flex"}
+          flexDirection={"row"}
+          justifyContent={"space-between"}
+        >
+          <InputLabel htmlFor="custom-input">Term </InputLabel>
+        </Box>
+        {/* <MonthSelector /> */}
+        <TextField
+          id="term"
+          value={managementPlan.term}
+          onChange={(e) =>
+            updateManagementPlan({ ...managementPlan, term: e.target.value })
+          }
+        />
+      </StyledBox>
       <StyledBox sx={{ bgcolor: "#fff" }}>
         {/* InputLabel */}
         <Box
@@ -92,12 +70,12 @@ const ManagementPlanCreate = () => {
             </IconButton>
           </Box>
         </Box>
-        {/* TextField */}
+
         <TextField
           rows={3}
           multiline
-          id="custom-input"
-          // value={value}
+          id="managementPhilosophy"
+          value={managementPlan.managementPhilosophy}
           // onChange={(e) => setValue(e.target.value)}
           variant="outlined"
         />
@@ -122,12 +100,12 @@ const ManagementPlanCreate = () => {
             </IconButton>
           </Box>
         </Box>
-        {/* TextField */}
+
         <TextField
           rows={3}
           multiline
-          id="custom-input"
-          // value={value}
+          id="mission"
+          value={managementPlan.mission}
           // onChange={(e) => setValue(e.target.value)}
           variant="outlined"
         />
@@ -152,12 +130,12 @@ const ManagementPlanCreate = () => {
             </IconButton>
           </Box>
         </Box>
-        {/* TextField */}
+
         <TextField
           rows={3}
           multiline
-          id="custom-input"
-          // value={value}
+          id="guidingPrinciple"
+          value={managementPlan.guidingPrinciple}
           // onChange={(e) => setValue(e.target.value)}
           variant="outlined"
         />
@@ -182,12 +160,12 @@ const ManagementPlanCreate = () => {
             </IconButton>
           </Box>
         </Box>
-        {/* TextField */}
+
         <TextField
           rows={3}
           multiline
-          id="custom-input"
-          // value={value}
+          id="managementVision"
+          value={managementPlan.managementVision}
           // onChange={(e) => setValue(e.target.value)}
           variant="outlined"
         />
@@ -201,7 +179,7 @@ const ManagementPlanCreate = () => {
         >
           KPI Grid
         </Typography>
-        <BaseGrid rowData={KPIGridRowData} colDefs={KPIGridColDefs} />
+        <BaseGrid rowData={managementPlan.kpi} colDefs={KPIGridColDefs} />
       </StyledBox>
 
       <StyledBox sx={{ bgcolor: "#fff", height: 300 }}>
@@ -213,7 +191,7 @@ const ManagementPlanCreate = () => {
           アクションプラン
         </Typography>
         <BaseGrid
-          rowData={ActionPlanGridRowData}
+          rowData={managementPlan.actionPlan}
           colDefs={ActionPlanGridColDefs}
         />
       </StyledBox>

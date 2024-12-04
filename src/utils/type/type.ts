@@ -79,3 +79,13 @@ export interface ActionPlanGridRow {
   period: string;
   remarks: string;
 }
+
+export type ManagementPlan = {
+  term: string | null;
+  managementPhilosophy: string | null;
+  mission: string | null;
+  guidingPrinciple: string | null;
+  managementVision: string | null;
+  kpi: KPIGridRow[];
+  actionPlan: ActionPlanGridRow[];
+};
