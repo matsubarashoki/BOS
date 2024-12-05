@@ -3,7 +3,7 @@ import { ManagementPlan } from "../utils/type/type";
 
 type managementPlanState = {
   managementPlan: ManagementPlan;
-  updateManagementPlan: (managementPlan: Partial<ManagementPlan>) => void;
+  updateManagementPlan: (managementPlan: ManagementPlan) => void;
 };
 
 // ストアの作成
@@ -32,8 +32,7 @@ const useManagementPlanStore = create<managementPlanState>((set) => ({
     ],
   },
 
-  updateManagementPlan: (newManagementPlan) =>
-    set((state) => ({ ...state, ...newManagementPlan })),
+  updateManagementPlan: (managementPlan) => set({ managementPlan }),
 }));
 
 export default useManagementPlanStore;
