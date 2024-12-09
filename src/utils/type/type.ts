@@ -86,6 +86,8 @@ export type ManagementPlan = {
   mission: string | null;
   guidingPrinciple: string | null;
   managementVision: string | null;
+  circumstance: string | null;
+  strategy: string | null;
   kpi: KPIGridRow[];
   actionPlan: ActionPlanGridRow[];
 };

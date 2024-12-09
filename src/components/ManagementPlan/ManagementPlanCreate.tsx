@@ -23,44 +23,7 @@ import { KPIGridColDefs } from "./KPIGridColDefs";
 
 const ManagementPlanCreate = () => {
   const { managementPlan, updateManagementPlan } = useManagementPlanStore();
-  const InitialManagementPlan = {
-    term: null,
-    managementPhilosophy: null,
-    mission: null,
-    guidingPrinciple: null,
-    managementVision: null,
-    kpi: [
-      {
-        target_qualitative_category: "",
-        target_qualitative: "",
-        target_quantitative_category: "",
-        target_quantitative: "",
-      },
-    ],
-    actionPlan: [
-      {
-        No: "",
-        contents: "",
-        period: "",
-        remarks: "",
-      },
-    ],
-  };
 
-  // const handleManagementPlanItem = (
-  //   field: keyof ManagementPlan,
-  //   value: any
-  // ) => {
-  //   setLocalManagementPlan((prev) => ({
-  //     ...prev,
-  //     [field]: value,
-  //   }));
-  // };
-
-  // // 保存ボタンを押したときに Zustand ストアを更新
-  // const handleSave = () => {
-  //   updateManagementPlan(localManagementPlan);
-  // };
   const StyledBox = styled(Box)(() => ({
     display: "flex",
     flexDirection: "column",
@@ -211,7 +174,7 @@ const ManagementPlanCreate = () => {
             <InputLabel htmlFor="custom-input">経営ビジョン </InputLabel>
             <Box>
               <IconButton sx={{ paddingY: 0, paddingX: 0.5 }}>
-                <Tooltip title={"経営理念とは"}>
+                <Tooltip title={"経営ビジョンとは"}>
                   <HelpIcon />
                 </Tooltip>
               </IconButton>
@@ -225,6 +188,64 @@ const ManagementPlanCreate = () => {
             rows={3}
             multiline
             id="managementVision"
+            // onChange={(e) => setValue(e.target.value)}
+            variant="outlined"
+          />
+        </StyledBox>
+
+        <StyledBox sx={{ bgcolor: "#fff" }}>
+          {/* InputLabel */}
+          <Box
+            display={"flex"}
+            flexDirection={"row"}
+            justifyContent={"space-between"}
+          >
+            <InputLabel htmlFor="custom-input">経営戦略 </InputLabel>
+            <Box>
+              <IconButton sx={{ paddingY: 0, paddingX: 0.5 }}>
+                <Tooltip title={"経営戦略とは"}>
+                  <HelpIcon />
+                </Tooltip>
+              </IconButton>
+              <IconButton sx={{ paddingY: 0, paddingX: 0.5 }}>
+                <ClearIcon />
+              </IconButton>
+            </Box>
+          </Box>
+
+          <TextField
+            rows={6}
+            multiline
+            id="strategy"
+            // onChange={(e) => setValue(e.target.value)}
+            variant="outlined"
+          />
+        </StyledBox>
+
+        <StyledBox sx={{ bgcolor: "#fff" }}>
+          {/* InputLabel */}
+          <Box
+            display={"flex"}
+            flexDirection={"row"}
+            justifyContent={"space-between"}
+          >
+            <InputLabel htmlFor="custom-input">外部環境 </InputLabel>
+            <Box>
+              <IconButton sx={{ paddingY: 0, paddingX: 0.5 }}>
+                <Tooltip title={"外部環境とは"}>
+                  <HelpIcon />
+                </Tooltip>
+              </IconButton>
+              <IconButton sx={{ paddingY: 0, paddingX: 0.5 }}>
+                <ClearIcon />
+              </IconButton>
+            </Box>
+          </Box>
+
+          <TextField
+            rows={3}
+            multiline
+            id="circumstance"
             // onChange={(e) => setValue(e.target.value)}
             variant="outlined"
           />

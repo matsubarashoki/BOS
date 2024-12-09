@@ -23,6 +23,8 @@ export const ManagementPlanSchema = z.object({
   mission: z.string().nullable(), // null 許容
   guidingPrinciple: z.string().nullable(), // null 許容
   managementVision: z.string().nullable(), // null 許容
+  strategy: z.string().nullable(), // null 許容
+  circumstance: z.string().nullable(), // null 許容
   kpi: z.array(KPIGridRowSchema), // KPIGridRow の配列
   actionPlan: z.array(ActionPlanGridRowSchema), // ActionPlanGridRow の配列
 });
