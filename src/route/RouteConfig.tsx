@@ -4,6 +4,7 @@ import OrgManagement from "../components/Master/OrgManagement/OrgManagement";
 import UserManagement from "../components/Master/UserManagement/UserManagement";
 import BookReport from "../components/Report/BookReport";
 
+import Calendar from "../components/Calender/Calendar";
 import ManagementPlanAnalyze from "../components/ManagementPlan/ManagementPlanAnalyze";
 import ManagementPlanAssessment from "../components/ManagementPlan/ManagementPlanAssessment";
 import ManagementPlanCreate from "../components/ManagementPlan/ManagementPlanCreate";
@@ -66,6 +67,10 @@ export const RouterConfig = () => {
             <Route path="analyze" element={<ManagementPlanAnalyze />} />
             <Route path="assessment" element={<ManagementPlanAssessment />} />
             <Route path="history" element={<ManagementPlanHistory />} />
+          </Route>
+
+          <Route path="calender">
+            <Route index={true} element={<Calendar />} />
           </Route>
         </Route>
 

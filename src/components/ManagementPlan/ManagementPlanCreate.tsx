@@ -57,26 +57,32 @@ const ManagementPlanCreate = () => {
       sx={{ my: 2, alignItems: "center", py: 1 }}
     >
       <Box component="form">
-        <StyledBox sx={{ bgcolor: "#fff", width: "20%" }}>
-          <Box
-            display={"flex"}
-            flexDirection={"row"}
-            justifyContent={"space-between"}
-          >
-            <InputLabel htmlFor="custom-input">Term </InputLabel>
-          </Box>
-          {/* <MonthSelector /> */}
-          <Controller
-            name={"term"}
-            control={control}
-            render={({ field: controllerField }) => (
-              <TextField {...controllerField} type="text" />
-            )}
-          />
-        </StyledBox>
-        {/* <Box display={"flex"} justifyContent={"center"} mt={2}>
-        <button onClick={handleSave}>保存</button>
-      </Box> */}
+        <Box
+          display={"flex"}
+          flexDirection={"row"}
+          justifyContent={"space-between"}
+        >
+          <StyledBox sx={{ bgcolor: "#fff", width: "20%" }}>
+            <Box
+              display={"flex"}
+              flexDirection={"row"}
+              justifyContent={"space-between"}
+            >
+              <InputLabel htmlFor="custom-input">Term</InputLabel>
+            </Box>
+            {/* <MonthSelector /> */}
+            <Controller
+              name={"term"}
+              control={control}
+              render={({ field: controllerField }) => (
+                <TextField {...controllerField} type="text" />
+              )}
+            />
+          </StyledBox>
+          <Button onClick={handleSubmit(onSubmit)} color="primary">
+            save
+          </Button>
+        </Box>
         <StyledBox sx={{ bgcolor: "#fff" }}>
           {/* InputLabel */}
           <Box
@@ -97,12 +103,17 @@ const ManagementPlanCreate = () => {
             </Box>
           </Box>
 
-          <TextField
-            rows={3}
-            multiline
-            id="managementPhilosophy"
-            // onChange={(e) => setValue(e.target.value)}
-            variant="outlined"
+          <Controller
+            name={"managementPhilosophy"}
+            control={control}
+            render={({ field: controllerField }) => (
+              <TextField
+                {...controllerField}
+                rows={3}
+                multiline
+                variant="outlined"
+              />
+            )}
           />
         </StyledBox>
 
@@ -126,12 +137,17 @@ const ManagementPlanCreate = () => {
             </Box>
           </Box>
 
-          <TextField
-            rows={3}
-            multiline
-            id="mission"
-            // onChange={(e) => setValue(e.target.value)}
-            variant="outlined"
+          <Controller
+            name={"mission"}
+            control={control}
+            render={({ field: controllerField }) => (
+              <TextField
+                {...controllerField}
+                rows={3}
+                multiline
+                variant="outlined"
+              />
+            )}
           />
         </StyledBox>
 
@@ -155,12 +171,17 @@ const ManagementPlanCreate = () => {
             </Box>
           </Box>
 
-          <TextField
-            rows={3}
-            multiline
-            id="guidingPrinciple"
-            // onChange={(e) => setValue(e.target.value)}
-            variant="outlined"
+          <Controller
+            name={"guidingPrinciple"}
+            control={control}
+            render={({ field: controllerField }) => (
+              <TextField
+                {...controllerField}
+                rows={3}
+                multiline
+                variant="outlined"
+              />
+            )}
           />
         </StyledBox>
 
@@ -184,12 +205,17 @@ const ManagementPlanCreate = () => {
             </Box>
           </Box>
 
-          <TextField
-            rows={3}
-            multiline
-            id="managementVision"
-            // onChange={(e) => setValue(e.target.value)}
-            variant="outlined"
+          <Controller
+            name={"managementVision"}
+            control={control}
+            render={({ field: controllerField }) => (
+              <TextField
+                {...controllerField}
+                rows={3}
+                multiline
+                variant="outlined"
+              />
+            )}
           />
         </StyledBox>
 
@@ -213,12 +239,17 @@ const ManagementPlanCreate = () => {
             </Box>
           </Box>
 
-          <TextField
-            rows={6}
-            multiline
-            id="strategy"
-            // onChange={(e) => setValue(e.target.value)}
-            variant="outlined"
+          <Controller
+            name={"strategy"}
+            control={control}
+            render={({ field: controllerField }) => (
+              <TextField
+                {...controllerField}
+                rows={6}
+                multiline
+                variant="outlined"
+              />
+            )}
           />
         </StyledBox>
 
@@ -242,12 +273,17 @@ const ManagementPlanCreate = () => {
             </Box>
           </Box>
 
-          <TextField
-            rows={3}
-            multiline
-            id="circumstance"
-            // onChange={(e) => setValue(e.target.value)}
-            variant="outlined"
+          <Controller
+            name={"circumstance"}
+            control={control}
+            render={({ field: controllerField }) => (
+              <TextField
+                {...controllerField}
+                rows={3}
+                multiline
+                variant="outlined"
+              />
+            )}
           />
         </StyledBox>
 
@@ -259,7 +295,17 @@ const ManagementPlanCreate = () => {
           >
             KPI Grid
           </Typography>
-          <BaseGrid rowData={KPIGridRowData} colDefs={KPIGridColDefs} />
+          <Controller
+            name={"kpi"}
+            control={control}
+            render={({ field: controllerField }) => (
+              <BaseGrid
+                {...controllerField}
+                rowData={KPIGridRowData}
+                colDefs={KPIGridColDefs}
+              />
+            )}
+          />
         </StyledBox>
 
         <StyledBox sx={{ bgcolor: "#fff", height: 300 }}>
@@ -270,14 +316,18 @@ const ManagementPlanCreate = () => {
           >
             アクションプラン
           </Typography>
-          <BaseGrid
-            rowData={ActionPlanGridRowData}
-            colDefs={ActionPlanGridColDefs}
+          <Controller
+            name={"actionPlan"}
+            control={control}
+            render={({ field: controllerField }) => (
+              <BaseGrid
+                {...controllerField}
+                rowData={ActionPlanGridRowData}
+                colDefs={ActionPlanGridColDefs}
+              />
+            )}
           />
         </StyledBox>
-        <Button onClick={handleSubmit(onSubmit)} color="primary">
-          save
-        </Button>
       </Box>
     </Container>
   );

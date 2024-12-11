@@ -25,7 +25,7 @@ export const setNavLinks: Array<{ text: string; url: string }> = [
   { text: "Report", url: "report" },
   { text: "Wiki", url: "/wiki" },
   { text: "ManagementPlan", url: "/managementPlan" },
-  { text: "Blog", url: "/blog" },
+  { text: "Calender", url: "/calender" },
 ];
 
 interface HeaderProps {

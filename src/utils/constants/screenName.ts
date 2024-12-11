@@ -46,4 +46,7 @@ export const pathScreenSet: ScreenPath = {
   "/managementPlan/history": {
     name: "経営計画 履歴参照",
   },
+  "/calender": {
+    name: "会社カレンダー",
+  },
 };
