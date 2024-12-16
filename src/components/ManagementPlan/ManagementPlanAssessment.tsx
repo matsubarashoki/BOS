@@ -1,15 +1,11 @@
 import { zodResolver } from "@hookform/resolvers/zod";
-import ClearIcon from "@mui/icons-material/Clear";
-import HelpIcon from "@mui/icons-material/Help";
 import {
   Box,
   Button,
   Container,
-  IconButton,
   InputLabel,
   styled,
   TextField,
-  Tooltip,
   Typography,
 } from "@mui/material";
 import { Controller, SubmitHandler, useForm } from "react-hook-form";
@@ -83,27 +79,23 @@ const ManagementPlanAssessment = () => {
             save
           </Button>
         </Box>
-        <StyledBox sx={{ bgcolor: "#fff" }}>
-          {/* InputLabel */}
+        <Box
+          display="flex"
+          flexDirection="row"
+          sx={{
+            width: "100%",
+            bgcolor: "#fff",
+            margin: "8px",
+            border: "1px solid #ccc",
+            borderRadius: "8px",
+          }}
+        >
           <Box
-            display={"flex"}
-            flexDirection={"row"}
-            justifyContent={"space-between"}
+            display="flex"
+            flexDirection="column"
+            sx={{ paddingY: 0.5, width: "60%" }}
           >
             <InputLabel htmlFor="custom-input">経営理念 </InputLabel>
-            <Box>
-              <IconButton sx={{ paddingY: 0, paddingX: 0.5 }}>
-                <Tooltip title={"経営理念とは"}>
-                  <HelpIcon />
-                </Tooltip>
-              </IconButton>
-              <IconButton sx={{ paddingY: 0, paddingX: 0.5 }}>
-                <ClearIcon />
-              </IconButton>
-            </Box>
-          </Box>
-
-          <Box display={"flex"}>
             <Controller
               name={"managementPhilosophy"}
               control={control}
@@ -117,191 +109,290 @@ const ManagementPlanAssessment = () => {
                 />
               )}
             />
-            <TextField
-              label="評価点"
-              sx={{
-                justifyContent: "center",
-                "& .MuiInputBase-input": {
-                  padding: 1,
-                  fontSize: "50px", // フォントサイズを指定
-                },
-                maxHeight: "102px",
-              }}
-              multiline
-              variant="outlined"
+          </Box>
+          <Box
+            display="flex"
+            flexDirection="column"
+            sx={{ paddingY: 0.5, width: "40%" }}
+          >
+            <Box
+              display="flex"
+              flexDirection="row"
+              justifyContent={"space-between"}
+            >
+              <Box>
+                <InputLabel htmlFor="custom-input">今期評価</InputLabel>
+              </Box>
+              {/* <Box>
+                <IconButton sx={{ paddingY: 0, paddingX: 0.5 }}>
+                  <Tooltip title={"経営理念とは"}>
+                    <HelpIcon />
+                  </Tooltip>
+                </IconButton>
+                <IconButton sx={{ paddingY: 0, paddingX: 0.5 }}>
+                  <ClearIcon />
+                </IconButton>
+              </Box> */}
+            </Box>
+            <Controller
+              name={"managementPhilosophy"}
+              control={control}
+              render={({ field: controllerField }) => (
+                <TextField
+                  sx={{ width: "100%", maxHeight: "102px" }}
+                  {...controllerField}
+                  rows={3}
+                  multiline
+                  variant="outlined"
+                />
+              )}
             />
           </Box>
-        </StyledBox>
+        </Box>
 
-        <StyledBox sx={{ bgcolor: "#fff" }}>
-          {/* InputLabel */}
+        <Box
+          display="flex"
+          flexDirection="row"
+          sx={{
+            width: "100%",
+            bgcolor: "#fff",
+            margin: "8px",
+            border: "1px solid #ccc",
+            borderRadius: "8px",
+          }}
+        >
           <Box
-            display={"flex"}
-            flexDirection={"row"}
-            justifyContent={"space-between"}
+            display="flex"
+            flexDirection="column"
+            sx={{ paddingY: 0.5, width: "60%" }}
           >
             <InputLabel htmlFor="custom-input">ミッション </InputLabel>
-            <Box>
-              <IconButton sx={{ paddingY: 0, paddingX: 0.5 }}>
-                <Tooltip title={"ミッションとは"}>
-                  <HelpIcon />
-                </Tooltip>
-              </IconButton>
-              <IconButton sx={{ paddingY: 0, paddingX: 0.5 }}>
-                <ClearIcon />
-              </IconButton>
-            </Box>
+            <Controller
+              name={"managementPhilosophy"}
+              control={control}
+              render={({ field: controllerField }) => (
+                <TextField
+                  sx={{ width: "100%", maxHeight: "102px" }}
+                  {...controllerField}
+                  rows={3}
+                  multiline
+                  variant="outlined"
+                />
+              )}
+            />
           </Box>
-
-          <Controller
-            name={"mission"}
-            control={control}
-            render={({ field: controllerField }) => (
-              <TextField
-                {...controllerField}
-                rows={3}
-                multiline
-                variant="outlined"
-              />
-            )}
-          />
-        </StyledBox>
-
-        <StyledBox sx={{ bgcolor: "#fff" }}>
-          {/* InputLabel */}
           <Box
-            display={"flex"}
-            flexDirection={"row"}
-            justifyContent={"space-between"}
+            display="flex"
+            flexDirection="column"
+            sx={{ paddingY: 0.5, width: "40%" }}
+          >
+            <Box
+              display="flex"
+              flexDirection="row"
+              justifyContent={"space-between"}
+            >
+              <Box>
+                <InputLabel htmlFor="custom-input">今期評価</InputLabel>
+              </Box>
+            </Box>
+            <Controller
+              name={"managementPhilosophy"}
+              control={control}
+              render={({ field: controllerField }) => (
+                <TextField
+                  sx={{ width: "100%", maxHeight: "102px" }}
+                  {...controllerField}
+                  rows={3}
+                  multiline
+                  variant="outlined"
+                />
+              )}
+            />
+          </Box>
+        </Box>
+
+        <Box
+          display="flex"
+          flexDirection="row"
+          sx={{
+            width: "100%",
+            bgcolor: "#fff",
+            margin: "8px",
+            border: "1px solid #ccc",
+            borderRadius: "8px",
+          }}
+        >
+          <Box
+            display="flex"
+            flexDirection="column"
+            sx={{ paddingY: 0.5, width: "60%" }}
           >
             <InputLabel htmlFor="custom-input">経営指針 </InputLabel>
-            <Box>
-              <IconButton sx={{ paddingY: 0, paddingX: 0.5 }}>
-                <Tooltip title={"経営指針とは"}>
-                  <HelpIcon />
-                </Tooltip>
-              </IconButton>
-              <IconButton sx={{ paddingY: 0, paddingX: 0.5 }}>
-                <ClearIcon />
-              </IconButton>
-            </Box>
+            <Controller
+              name={"managementPhilosophy"}
+              control={control}
+              render={({ field: controllerField }) => (
+                <TextField
+                  sx={{ width: "100%", maxHeight: "102px" }}
+                  {...controllerField}
+                  rows={3}
+                  multiline
+                  variant="outlined"
+                />
+              )}
+            />
           </Box>
-
-          <Controller
-            name={"guidingPrinciple"}
-            control={control}
-            render={({ field: controllerField }) => (
-              <TextField
-                {...controllerField}
-                rows={3}
-                multiline
-                variant="outlined"
-              />
-            )}
-          />
-        </StyledBox>
-
-        <StyledBox sx={{ bgcolor: "#fff" }}>
-          {/* InputLabel */}
           <Box
-            display={"flex"}
-            flexDirection={"row"}
-            justifyContent={"space-between"}
+            display="flex"
+            flexDirection="column"
+            sx={{ paddingY: 0.5, width: "40%" }}
+          >
+            <Box
+              display="flex"
+              flexDirection="row"
+              justifyContent={"space-between"}
+            >
+              <Box>
+                <InputLabel htmlFor="custom-input">今期評価</InputLabel>
+              </Box>
+            </Box>
+            <Controller
+              name={"managementPhilosophy"}
+              control={control}
+              render={({ field: controllerField }) => (
+                <TextField
+                  sx={{ width: "100%", maxHeight: "102px" }}
+                  {...controllerField}
+                  rows={3}
+                  multiline
+                  variant="outlined"
+                />
+              )}
+            />
+          </Box>
+        </Box>
+
+        <Box
+          display="flex"
+          flexDirection="row"
+          sx={{
+            width: "100%",
+            bgcolor: "#fff",
+            margin: "8px",
+            border: "1px solid #ccc",
+            borderRadius: "8px",
+          }}
+        >
+          <Box
+            display="flex"
+            flexDirection="column"
+            sx={{ paddingY: 0.5, width: "60%" }}
           >
             <InputLabel htmlFor="custom-input">経営ビジョン </InputLabel>
-            <Box>
-              <IconButton sx={{ paddingY: 0, paddingX: 0.5 }}>
-                <Tooltip title={"経営ビジョンとは"}>
-                  <HelpIcon />
-                </Tooltip>
-              </IconButton>
-              <IconButton sx={{ paddingY: 0, paddingX: 0.5 }}>
-                <ClearIcon />
-              </IconButton>
-            </Box>
+            <Controller
+              name={"managementPhilosophy"}
+              control={control}
+              render={({ field: controllerField }) => (
+                <TextField
+                  sx={{ width: "100%", maxHeight: "102px" }}
+                  {...controllerField}
+                  rows={3}
+                  multiline
+                  variant="outlined"
+                />
+              )}
+            />
           </Box>
-
-          <Controller
-            name={"managementVision"}
-            control={control}
-            render={({ field: controllerField }) => (
-              <TextField
-                {...controllerField}
-                rows={3}
-                multiline
-                variant="outlined"
-              />
-            )}
-          />
-        </StyledBox>
-
-        <StyledBox sx={{ bgcolor: "#fff" }}>
-          {/* InputLabel */}
           <Box
-            display={"flex"}
-            flexDirection={"row"}
-            justifyContent={"space-between"}
+            display="flex"
+            flexDirection="column"
+            sx={{ paddingY: 0.5, width: "40%" }}
+          >
+            <Box
+              display="flex"
+              flexDirection="row"
+              justifyContent={"space-between"}
+            >
+              <Box>
+                <InputLabel htmlFor="custom-input">今期評価</InputLabel>
+              </Box>
+            </Box>
+            <Controller
+              name={"managementPhilosophy"}
+              control={control}
+              render={({ field: controllerField }) => (
+                <TextField
+                  sx={{ width: "100%", maxHeight: "102px" }}
+                  {...controllerField}
+                  rows={3}
+                  multiline
+                  variant="outlined"
+                />
+              )}
+            />
+          </Box>
+        </Box>
+
+        <Box
+          display="flex"
+          flexDirection="row"
+          sx={{
+            width: "100%",
+            bgcolor: "#fff",
+            margin: "8px",
+            border: "1px solid #ccc",
+            borderRadius: "8px",
+          }}
+        >
+          <Box
+            display="flex"
+            flexDirection="column"
+            sx={{ paddingY: 0.5, width: "60%" }}
           >
             <InputLabel htmlFor="custom-input">経営戦略 </InputLabel>
-            <Box>
-              <IconButton sx={{ paddingY: 0, paddingX: 0.5 }}>
-                <Tooltip title={"経営戦略とは"}>
-                  <HelpIcon />
-                </Tooltip>
-              </IconButton>
-              <IconButton sx={{ paddingY: 0, paddingX: 0.5 }}>
-                <ClearIcon />
-              </IconButton>
-            </Box>
+            <Controller
+              name={"managementPhilosophy"}
+              control={control}
+              render={({ field: controllerField }) => (
+                <TextField
+                  sx={{ width: "100%", maxHeight: "102px" }}
+                  {...controllerField}
+                  rows={3}
+                  multiline
+                  variant="outlined"
+                />
+              )}
+            />
           </Box>
-
-          <Controller
-            name={"strategy"}
-            control={control}
-            render={({ field: controllerField }) => (
-              <TextField
-                {...controllerField}
-                rows={6}
-                multiline
-                variant="outlined"
-              />
-            )}
-          />
-        </StyledBox>
-
-        <StyledBox sx={{ bgcolor: "#fff" }}>
-          {/* InputLabel */}
           <Box
-            display={"flex"}
-            flexDirection={"row"}
-            justifyContent={"space-between"}
+            display="flex"
+            flexDirection="column"
+            sx={{ paddingY: 0.5, width: "40%" }}
           >
-            <InputLabel htmlFor="custom-input">外部環境 </InputLabel>
-            <Box>
-              <IconButton sx={{ paddingY: 0, paddingX: 0.5 }}>
-                <Tooltip title={"外部環境とは"}>
-                  <HelpIcon />
-                </Tooltip>
-              </IconButton>
-              <IconButton sx={{ paddingY: 0, paddingX: 0.5 }}>
-                <ClearIcon />
-              </IconButton>
+            <Box
+              display="flex"
+              flexDirection="row"
+              justifyContent={"space-between"}
+            >
+              <Box>
+                <InputLabel htmlFor="custom-input">今期評価</InputLabel>
+              </Box>
             </Box>
+            <Controller
+              name={"managementPhilosophy"}
+              control={control}
+              render={({ field: controllerField }) => (
+                <TextField
+                  sx={{ width: "100%", maxHeight: "102px" }}
+                  {...controllerField}
+                  rows={3}
+                  multiline
+                  variant="outlined"
+                />
+              )}
+            />
           </Box>
-
-          <Controller
-            name={"circumstance"}
-            control={control}
-            render={({ field: controllerField }) => (
-              <TextField
-                {...controllerField}
-                rows={3}
-                multiline
-                variant="outlined"
-              />
-            )}
-          />
-        </StyledBox>
+        </Box>
 
         <StyledBox sx={{ bgcolor: "#fff", height: 300 }}>
           <Typography
