@@ -17,7 +17,6 @@ import { Dispatch, SetStateAction, useEffect, useRef, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useAuth } from "../route/routeAuthHooks";
 import { useScreenNameStore } from "../store/screenNameStore";
-import { pathScreenSet } from "../utils/constants/screenName";
 
 export const setNavLinks: Array<{ text: string; url: string }> = [
   { text: "Top", url: "/" },
@@ -26,6 +25,7 @@ export const setNavLinks: Array<{ text: string; url: string }> = [
   { text: "Wiki", url: "/wiki" },
   { text: "ManagementPlan", url: "/managementPlan" },
   { text: "Calender", url: "/calender" },
+  { text: "Bulletin Board", url: "/board" },
 ];
 
 interface HeaderProps {
@@ -41,11 +41,11 @@ const Header = ({ setContentMarginTop }: HeaderProps) => {
   const { screenName, setScreenName } = useScreenNameStore();
   const appBar1Ref = useRef<HTMLElement>(null);
 
-  useEffect(() => {
-    if (pathScreenSet[pathname].name) {
-      setScreenName(pathScreenSet[pathname].name);
-    }
-  }, [pathname]);
+  // useEffect(() => {
+  //   if (pathScreenSet[pathname].name) {
+  //     setScreenName(pathScreenSet[pathname].name);
+  //   }
+  // }, [pathname]);
 
   useEffect(() => {
     const updateMarginTop = () => {
@@ -219,7 +219,7 @@ const Header = ({ setContentMarginTop }: HeaderProps) => {
             sx={{ my: 2 }}
             color="#fff"
           >
-            {screenName}
+            {screenName ? screenName : ""}
           </Typography>
         </Box>
       </AppBar>

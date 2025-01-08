@@ -49,4 +49,10 @@ export const pathScreenSet: ScreenPath = {
   "/calender": {
     name: "会社カレンダー",
   },
+  "/board": {
+    name: "掲示板",
+  },
+  "/board/": {
+    name: "掲示板",
+  },
 };

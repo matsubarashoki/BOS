@@ -5,7 +5,7 @@ import { Box, Container } from "@mui/material";
 
 const Calendar = () => {
   return (
-    <Container maxWidth={false} sx={{ padding: 2 }}>
+    <Container maxWidth={false} sx={{ padding: 2, marginY: 1 }}>
       <Box sx={{ padding: 2, width: "100%", bgcolor: "#fff" }}>
         <FullCalendar
           plugins={[dayGridPlugin]}
