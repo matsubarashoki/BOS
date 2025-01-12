@@ -2,6 +2,7 @@ import { z } from "zod";
 
 // KPIGridRow の Zod スキーマ
 const KPIGridRowSchema = z.object({
+  id: z.number(),
   target_qualitative_category: z.string(),
   target_qualitative: z.string(),
   target_quantitative_category: z.string(),

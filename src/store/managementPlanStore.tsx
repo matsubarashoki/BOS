@@ -18,6 +18,7 @@ const useManagementPlanStore = create<managementPlanState>((set) => ({
     circumstance: null,
     kpi: [
       {
+        No: 0,
         target_qualitative_category: "",
         target_qualitative: "",
         target_quantitative_category: "",

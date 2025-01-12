@@ -67,6 +67,7 @@ export interface WikiType {
 }
 
 export interface KPIGridRow {
+  No: number;
   target_qualitative_category: string;
   target_qualitative: string;
   target_quantitative_category: string;

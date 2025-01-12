@@ -1,5 +1,5 @@
 // Theme
-import { ColDef } from "ag-grid-community";
+import { ColDef, GridOptions } from "ag-grid-community";
 import { AgGridReact } from "ag-grid-react";
 // React Grid Logic
 import "ag-grid-community/styles/ag-grid.css";
@@ -18,6 +18,13 @@ export const BaseGrid = <T,>({ rowData, colDefs }: BaseGridProps<T>) => {
     editable: true,
   };
 
+  const gridOption: GridOptions = {
+    rowSelection: {
+      mode: "multiRow",
+      enableClickSelection: true,
+    },
+  };
+
   // Container: Defines the grid's theme & dimensions.
   return (
     <div
@@ -28,6 +35,7 @@ export const BaseGrid = <T,>({ rowData, colDefs }: BaseGridProps<T>) => {
         rowData={rowData}
         columnDefs={colDefs}
         defaultColDef={defaultColDef}
+        gridOptions={gridOption}
       />
     </div>
   );

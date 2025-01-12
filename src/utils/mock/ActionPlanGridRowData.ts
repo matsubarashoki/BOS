@@ -2,19 +2,19 @@ import { ActionPlanGridRow } from "../type/type";
 
 export const ActionPlanGridRowData: ActionPlanGridRow[] = [
   {
-    No: "test",
+    No: "1",
     contents: "test",
     period: "test",
     remarks: "test",
   },
   {
-    No: "test",
+    No: "2",
     contents: "test",
     period: "test",
     remarks: "test",
   },
   {
-    No: "test",
+    No: "3",
     contents: "test",
     period: "test",
     remarks: "test",

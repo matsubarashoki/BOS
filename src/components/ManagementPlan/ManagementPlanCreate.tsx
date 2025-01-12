@@ -12,10 +12,12 @@ import {
   Tooltip,
   Typography,
 } from "@mui/material";
+import { useState } from "react";
 import { Controller, SubmitHandler, useForm } from "react-hook-form";
 import useManagementPlanStore from "../../store/managementPlanStore";
 import { ActionPlanGridRowData } from "../../utils/mock/ActionPlanGridRowData";
 import { KPIGridRowData } from "../../utils/mock/KPIGridRows";
+import { ActionPlanGridRow, KPIGridRow } from "../../utils/type/type";
 import { ManagementPlanSchema } from "../../utils/zodSchema/managementPlanForm";
 import { ActionPlanGridColDefs } from "./ActionPlanGridColDefs";
 import { BaseGrid } from "./BaseGrid";
@@ -23,6 +25,12 @@ import { KPIGridColDefs } from "./KPIGridColDefs";
 
 const ManagementPlanCreate = () => {
   const { managementPlan, updateManagementPlan } = useManagementPlanStore();
+  const [localKPIGridRowData, setLocalKPIGridRowData] =
+    useState<KPIGridRow[]>(KPIGridRowData);
+
+  const [localActionPlanGridRowData, setLocalActionPlanGridRowData] = useState<
+    ActionPlanGridRow[]
+  >(ActionPlanGridRowData);
 
   const StyledBox = styled(Box)(() => ({
     display: "flex",
@@ -51,6 +59,33 @@ const ManagementPlanCreate = () => {
     updateManagementPlan(data);
   };
 
+  const addKPIGrid = () => {
+    const maxId = localKPIGridRowData.reduce((max, row) => {
+      return row.id > max ? row.id : max;
+    }, 0);
+    setLocalKPIGridRowData((prevState) => [
+      ...prevState,
+      {
+        id: maxId + 1,
+        target_qualitative_category: "",
+        target_qualitative: "",
+        target_quantitative_category: "",
+        target_quantitative: "",
+      },
+    ]);
+  };
+
+  const addActionPlan = () => {
+    setLocalActionPlanGridRowData((prevState) => [
+      ...prevState,
+      {
+        No: "",
+        contents: "",
+        period: "",
+        remarks: "",
+      },
+    ]);
+  };
   return (
     <Container
       id="create-container"
@@ -288,20 +323,34 @@ const ManagementPlanCreate = () => {
         </StyledBox>
 
         <StyledBox sx={{ bgcolor: "#fff", height: 300 }}>
-          <Typography
-            variant="h5"
-            component={"h4"}
-            sx={{ marginY: 1, paddingLeft: 1 }}
-          >
-            KPI Grid
-          </Typography>
+          <Box display={"flex"} width={"100%"} justifyContent={"space-between"}>
+            <Box>
+              <Typography
+                variant="h5"
+                component={"h4"}
+                sx={{ marginY: 1, paddingLeft: 1 }}
+              >
+                KPI Grid
+              </Typography>
+            </Box>
+            <Box display={"flex"} textAlign={"center"} py={1}>
+              <Button
+                sx={{ border: "0.5px solid green", mx: 1 }}
+                onClick={() => addKPIGrid()}
+              >
+                追加
+              </Button>
+              <Button sx={{ border: "0.5px solid green", mx: 1 }}>削除</Button>
+            </Box>
+          </Box>
+
           <Controller
             name={"kpi"}
             control={control}
             render={({ field: controllerField }) => (
               <BaseGrid
                 {...controllerField}
-                rowData={KPIGridRowData}
+                rowData={localKPIGridRowData}
                 colDefs={KPIGridColDefs}
               />
             )}
@@ -309,20 +358,33 @@ const ManagementPlanCreate = () => {
         </StyledBox>
 
         <StyledBox sx={{ bgcolor: "#fff", height: 300 }}>
-          <Typography
-            variant="h5"
-            component={"h4"}
-            sx={{ marginY: 1, paddingLeft: 1 }}
-          >
-            アクションプラン
-          </Typography>
+          <Box display={"flex"} width={"100%"} justifyContent={"space-between"}>
+            <Box>
+              <Typography
+                variant="h5"
+                component={"h4"}
+                sx={{ marginY: 1, paddingLeft: 1 }}
+              >
+                アクションプラン
+              </Typography>
+            </Box>
+            <Box display={"flex"} textAlign={"center"} py={1}>
+              <Button
+                sx={{ border: "0.5px solid green", mx: 1 }}
+                onClick={() => addActionPlan()}
+              >
+                追加
+              </Button>
+              <Button sx={{ border: "0.5px solid green", mx: 1 }}>削除</Button>
+            </Box>
+          </Box>
           <Controller
             name={"actionPlan"}
             control={control}
             render={({ field: controllerField }) => (
               <BaseGrid
                 {...controllerField}
-                rowData={ActionPlanGridRowData}
+                rowData={localActionPlanGridRowData}
                 colDefs={ActionPlanGridColDefs}
               />
             )}
