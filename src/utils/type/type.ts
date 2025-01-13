@@ -81,6 +81,12 @@ export interface ActionPlanGridRow {
   remarks: string;
 }
 
+export interface monthlyScheduleGridRow {
+  No: number;
+  month: string;
+  contents: string;
+}
+
 export type ManagementPlan = {
   term: string | null;
   managementPhilosophy: string | null;
@@ -91,4 +97,5 @@ export type ManagementPlan = {
   strategy: string | null;
   kpi: KPIGridRow[];
   actionPlan: ActionPlanGridRow[];
+  monthlySchedule: monthlyScheduleGridRow[];
 };

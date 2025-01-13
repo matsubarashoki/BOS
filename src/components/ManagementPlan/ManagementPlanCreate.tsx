@@ -17,11 +17,17 @@ import { Controller, SubmitHandler, useForm } from "react-hook-form";
 import useManagementPlanStore from "../../store/managementPlanStore";
 import { ActionPlanGridRowData } from "../../utils/mock/ActionPlanGridRowData";
 import { KPIGridRowData } from "../../utils/mock/KPIGridRows";
-import { ActionPlanGridRow, KPIGridRow } from "../../utils/type/type";
+import { monthlyScheduleGridRowData } from "../../utils/mock/monthlyScheduleGridRowData";
+import {
+  ActionPlanGridRow,
+  KPIGridRow,
+  monthlyScheduleGridRow,
+} from "../../utils/type/type";
 import { ManagementPlanSchema } from "../../utils/zodSchema/managementPlanForm";
 import { ActionPlanGridColDefs } from "./ActionPlanGridColDefs";
 import { BaseGrid } from "./BaseGrid";
 import { KPIGridColDefs } from "./KPIGridColDefs";
+import { MonthlyScheduleGridColDefs } from "./MonthlyScheduleGridColDefs";
 
 const ManagementPlanCreate = () => {
   const { managementPlan, updateManagementPlan } = useManagementPlanStore();
@@ -31,6 +37,9 @@ const ManagementPlanCreate = () => {
   const [localActionPlanGridRowData, setLocalActionPlanGridRowData] = useState<
     ActionPlanGridRow[]
   >(ActionPlanGridRowData);
+
+  const [localMonthlyScheduleGridRowData, setLocalMonthlyScheduleGridRowData] =
+    useState<monthlyScheduleGridRow[]>(monthlyScheduleGridRowData);
 
   const StyledBox = styled(Box)(() => ({
     display: "flex",
@@ -61,12 +70,12 @@ const ManagementPlanCreate = () => {
 
   const addKPIGrid = () => {
     const maxId = localKPIGridRowData.reduce((max, row) => {
-      return row.id > max ? row.id : max;
+      return row.No > max ? row.No : max;
     }, 0);
     setLocalKPIGridRowData((prevState) => [
       ...prevState,
       {
-        id: maxId + 1,
+        No: maxId + 1,
         target_qualitative_category: "",
         target_qualitative: "",
         target_quantitative_category: "",
@@ -386,6 +395,30 @@ const ManagementPlanCreate = () => {
                 {...controllerField}
                 rowData={localActionPlanGridRowData}
                 colDefs={ActionPlanGridColDefs}
+              />
+            )}
+          />
+        </StyledBox>
+
+        <StyledBox sx={{ bgcolor: "#fff", height: 300 }}>
+          <Box display={"flex"} width={"100%"} justifyContent={"space-between"}>
+            <Typography
+              variant="h5"
+              component={"h4"}
+              sx={{ marginY: 1, paddingLeft: 1 }}
+            >
+              マンスリースケジュール
+            </Typography>
+          </Box>
+          <Controller
+            name={"monthlySchedule"}
+            control={control}
+            render={({ field: controllerField }) => (
+              <BaseGrid
+                {...controllerField}
+                rowData={localMonthlyScheduleGridRowData}
+                colDefs={MonthlyScheduleGridColDefs}
+                rowHeight={100}
               />
             )}
           />

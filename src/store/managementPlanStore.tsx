@@ -33,6 +33,13 @@ const useManagementPlanStore = create<managementPlanState>((set) => ({
         remarks: "",
       },
     ],
+    monthlySchedule: [
+      {
+        No: 0,
+        month: "",
+        contents: "",
+      },
+    ],
   },
 
   updateManagementPlan: (managementPlan) => set({ managementPlan }),

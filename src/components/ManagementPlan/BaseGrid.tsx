@@ -9,10 +9,15 @@ import "ag-grid-community/styles/ag-theme-quartz.css";
 type BaseGridProps<T> = {
   rowData: T[];
   colDefs: ColDef<T>[];
+  rowHeight: number;
 };
 
 // Create new GridExample component
-export const BaseGrid = <T,>({ rowData, colDefs }: BaseGridProps<T>) => {
+export const BaseGrid = <T,>({
+  rowData,
+  colDefs,
+  rowHeight,
+}: BaseGridProps<T>) => {
   const defaultColDef: ColDef = {
     flex: 1,
     editable: true,
@@ -36,7 +41,12 @@ export const BaseGrid = <T,>({ rowData, colDefs }: BaseGridProps<T>) => {
         columnDefs={colDefs}
         defaultColDef={defaultColDef}
         gridOptions={gridOption}
+        rowHeight={rowHeight}
       />
     </div>
   );
+};
+
+BaseGrid.defaultProps = {
+  rowHeight: 0,
 };

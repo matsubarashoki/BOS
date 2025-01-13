@@ -2,7 +2,7 @@ import { z } from "zod";
 
 // KPIGridRow の Zod スキーマ
 const KPIGridRowSchema = z.object({
-  id: z.number(),
+  No: z.number(),
   target_qualitative_category: z.string(),
   target_qualitative: z.string(),
   target_quantitative_category: z.string(),
@@ -17,6 +17,12 @@ const ActionPlanGridRowSchema = z.object({
   remarks: z.string(),
 });
 
+const monthlyScheduleGridRowSchema = z.object({
+  No: z.number(),
+  month: z.string(),
+  contents: z.string(),
+});
+
 // ManagementPlan の Zod スキーマ
 export const ManagementPlanSchema = z.object({
   term: z.string().nullable(), // null 許容
@@ -28,6 +34,7 @@ export const ManagementPlanSchema = z.object({
   circumstance: z.string().nullable(), // null 許容
   kpi: z.array(KPIGridRowSchema), // KPIGridRow の配列
   actionPlan: z.array(ActionPlanGridRowSchema), // ActionPlanGridRow の配列
+  monthlySchedule: z.array(monthlyScheduleGridRowSchema),
 });
 
 // 型チェック用
